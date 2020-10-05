@@ -21,6 +21,8 @@ https://publy.co/
 ID : mingi4292@naver.com
 PW : money1@
 
+# 학습 자료 
+
 #안드로이드 코틀린
 https://www.youtube.com/watch?v=WlJszSmK_es
 
