@@ -23,16 +23,16 @@ PW : money1@
 
 # 학습 자료 
 
+#홍드로이드 코틀린 (안드로이드 기초)
+https://www.youtube.com/watch?v=IaXhn_I_ziY&list=PLC51MBz7PMywN2GJ53aF0UO5fnHGjW35a
+
+#코틀린 언어 강의 (코틀린 기초)
+https://www.youtube.com/watch?v=8RIsukgeUVw&list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN
+
 #안드로이드 코틀린
 https://www.youtube.com/watch?v=WlJszSmK_es
 
-#홍드로이드 코틀린
-https://www.youtube.com/watch?v=IaXhn_I_ziY&list=PLC51MBz7PMywN2GJ53aF0UO5fnHGjW35a
-
-#코틀린 언어 강의
-https://www.youtube.com/watch?v=8RIsukgeUVw&list=PLQdnHjXZyYadiw5aV3p6DwUdXV2bZuhlN
-
-#코틀린 강의
+#코틀린 강의 (Code with Joyce)
 https://www.youtube.com/user/soja0524/playlists
 
 #이것이 안드로이드다 책
