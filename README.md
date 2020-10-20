@@ -12,14 +12,6 @@ https://drive.google.com/drive/folders/16yzFIE3Zw4-Xc-MUCYrhwr2o-beR8NwA?usp=sha
 <Yes24-e북>
 http://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017
 
-ID : wwwdkdl
-PW : YesMoney@$
-
-<퍼블리-멤버십>
-https://publy.co/
-
-ID : mingi4292@naver.com
-PW : money1@
 
 # 학습 자료 
 
