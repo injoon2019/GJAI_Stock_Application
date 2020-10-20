@@ -4,21 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
-import com.example.eggmoney.SplashActivity
-val SPLASH_VIEW_TIME : Long = 1500
 
-class MainActivity : AppCompatActivity() {
+
+class SplashActivity : AppCompatActivity() {
+    val SPLASH_VIEW_TIME : Long = 1500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            startActivity(Intent(this, SplashActivity::class.java))
-
+            startActivity(Intent(this, SigninActivity::class.java))
+            finish()
         }, SPLASH_VIEW_TIME)
 
-
-
     }
-}
 
+}
