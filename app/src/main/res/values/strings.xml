@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Eggmoney</string>
+    <string name="kakao_app_key">89b20de2f1473856bd84ca4ca8ca5aff</string>
 </resources>
