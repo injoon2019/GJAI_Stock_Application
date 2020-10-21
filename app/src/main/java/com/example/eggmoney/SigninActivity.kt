@@ -74,7 +74,7 @@ class SigninActivity : AppCompatActivity() {
             UserManagement.getInstance().me( object : MeV2ResponseCallback() {
                 override fun onSuccess(result: MeV2Response?) {
                     // 로그인이 성공했을 때
-                    var intent = Intent(this@SigninActivity, MainActivity::class.java)
+                    var intent = Intent(this@SigninActivity, InfoActivity::class.java)
                     intent.putExtra("name", result!!.getNickname())
                     intent.putExtra("profile", result!!.getProfileImagePath())
                     startActivity(intent)

@@ -14,11 +14,15 @@
         android:orientation="vertical">
 
         <EditText
+            android:hint="Email"
+            android:id="@+id/signin_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="text" />
         <EditText
+            android:hint="Password"
+            android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="textPassword"

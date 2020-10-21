@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -14,7 +15,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.android.synthetic.main.activity_google_sign_in.*
 import kotlinx.android.synthetic.main.activity_signin.*
+import kotlinx.android.synthetic.main.activity_signin.btn_googleSignIn
 
 class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
     //firebase Auth
@@ -30,8 +33,15 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google_sign_in)
 
+        Toast.makeText(this, "회원가입 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
+
+        //회원가입 버튼
+        signup_button.setOnClickListener { startActivity(Intent(this, SignupActivity::class.java)) }
+
         //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
         btn_googleSignIn.setOnClickListener { signIn() }
+
+
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -94,7 +104,7 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
     }// firebaseAuthWithGoogle END
 
 
-    // toMainActivity
+    // toInfoActivity
     fun toInfoActivity(user: FirebaseUser?) {
         if (user != null) { // MainActivity 로 이동
             startActivity(Intent(this, InfoActivity::class.java))
@@ -106,6 +116,12 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    // signUp
+    private fun signUp(){
+        Toast.makeText(this, "회원가입 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, SignupActivity::class.java))
     }
     // signIn End
 
