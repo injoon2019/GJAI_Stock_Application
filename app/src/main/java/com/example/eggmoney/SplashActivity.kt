@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            startActivity(Intent(this, SigninActivity::class.java))
+            startActivity(Intent(this, GoogleSignInActivity::class.java))
             finish()
         }, SPLASH_VIEW_TIME)
 
