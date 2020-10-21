@@ -1,5 +1,6 @@
 package com.example.eggmoney
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -32,7 +33,7 @@ class InfoActivity : AppCompatActivity() {
 
         //firebase auth 객체
         firebaseAuth = FirebaseAuth.getInstance()
-        
+
         signout_button.setOnClickListener{signOut()}
     }
 
@@ -45,5 +46,8 @@ class InfoActivity : AppCompatActivity() {
         googleSignInClient.signOut().addOnCompleteListener(this) {
             //updateUI(null)
         }
+
+        startActivity(Intent(this, GoogleSignInActivity::class.java))
+        finish()
     }
 }
