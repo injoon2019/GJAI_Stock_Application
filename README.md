@@ -32,7 +32,7 @@ https://www.hanbit.co.kr/store/books/look.php?p_code=B4070147419
 #Do it 안드로이드 책 
 http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=328839404&gclid=Cj0KCQjwqrb7BRDlARIsACwGad5T67RAoxiSmSZQZuNEJWHOFFTsidMK0e-_oaAn8TnJGcwJMqXdkIcaApnAEALw_wcB
 
-# erreo 모음
+# error 모음
 com.google.android.gms.common.api.ApiException: 10:
 
 다른 노트북 개발 환경 추가
