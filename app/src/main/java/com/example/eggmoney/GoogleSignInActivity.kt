@@ -52,7 +52,7 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
         super.onStart()
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account !== null) { // 이미 로그인 되어있을시 바로 메인 액티비티로 이동
-            toMainActivity(firebaseAuth.currentUser)
+            toInfoActivity(firebaseAuth.currentUser)
         }
     } //onStart End
 
@@ -85,7 +85,7 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.w("LoginActivity", "firebaseAuthWithGoogle 성공", task.exception)
-                    toMainActivity(firebaseAuth?.currentUser)
+                    toInfoActivity(firebaseAuth?.currentUser)
                 } else {
                     Log.w("LoginActivity", "firebaseAuthWithGoogle 실패", task.exception)
                     // Snackbar.make(login_layout, "로그인에 실패하였습니다.", Snackbar.LENGTH_SHORT).show()
@@ -95,9 +95,9 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
 
 
     // toMainActivity
-    fun toMainActivity(user: FirebaseUser?) {
+    fun toInfoActivity(user: FirebaseUser?) {
         if (user != null) { // MainActivity 로 이동
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, InfoActivity::class.java))
             finish()
         }
     } // toMainActivity End
