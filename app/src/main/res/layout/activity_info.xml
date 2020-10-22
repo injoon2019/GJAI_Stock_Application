@@ -25,4 +25,10 @@
         app:menu="@menu/info_drawer_navigation">
 
     </com.google.android.material.navigation.NavigationView>
+
+    <Button
+        android:id="@+id/signout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃" />
 </androidx.drawerlayout.widget.DrawerLayout>

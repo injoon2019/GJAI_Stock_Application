@@ -50,7 +50,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         firebaseAuth = FirebaseAuth.getInstance()
 
         //나중에 로그아웃 기능 구현할때 다시보자
-        // signout_button.setOnClickListener{signOut()}
+        signout_button.setOnClickListener{signOut()}
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -66,7 +66,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         when(item.itemId){
             R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
             R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show()
-            R.id.item3-> Toast.makeText(this,"item3 clicked", Toast.LENGTH_SHORT).show()
+            R.id.item3-> Toast.makeText(this,"로그아웃합니다", Toast.LENGTH_SHORT).show()
+            R.id.item3 -> signOut()
         }
         return false
     }
