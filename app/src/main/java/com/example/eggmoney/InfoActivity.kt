@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.info_toolbar.*
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
-
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
 
@@ -66,8 +65,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         when(item.itemId){
             R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
             R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show()
-            R.id.item3-> Toast.makeText(this,"로그아웃합니다", Toast.LENGTH_SHORT).show()
-            R.id.item3 -> signOut()
+            R.id.item3-> Toast.makeText(this,"item3 clicked", Toast.LENGTH_SHORT).show()
         }
         return false
     }
