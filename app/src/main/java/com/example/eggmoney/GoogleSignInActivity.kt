@@ -33,7 +33,7 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google_sign_in)
 
-        Toast.makeText(this, "회원가입 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "회원가입 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
 
         //회원가입 버튼
         signup_button.setOnClickListener { startActivity(Intent(this, SignupActivity::class.java)) }

@@ -3,22 +3,37 @@ package com.example.eggmoney
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_info.*
+import kotlinx.android.synthetic.main.info_toolbar.*
 
-class InfoActivity : AppCompatActivity() {
+
+class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
 
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
+
+        setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
+        supportActionBar?.setDisplayHomeAsUpEnabled(true) // 드로어를 꺼낼 홈 버튼 활성화
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24) // 홈버튼 이미지 변경
+        supportActionBar?.setDisplayShowTitleEnabled(false) // 툴바에 타이틀 안보이게
+
+        main_navigationView.setNavigationItemSelectedListener(this)
 
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
@@ -34,9 +49,37 @@ class InfoActivity : AppCompatActivity() {
         //firebase auth 객체
         firebaseAuth = FirebaseAuth.getInstance()
 
-        signout_button.setOnClickListener{signOut()}
+        //나중에 로그아웃 기능 구현할때 다시보자
+        // signout_button.setOnClickListener{signOut()}
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home->{ // 메뉴 버튼
+                main_drawer_layout.openDrawer(GravityCompat.START)    // 네비게이션 드로어 열기
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
+            R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show()
+            R.id.item3-> Toast.makeText(this,"item3 clicked", Toast.LENGTH_SHORT).show()
+        }
+        return false
+    }
+
+    override fun onBackPressed() { //뒤로가기 처리
+        if(main_drawer_layout.isDrawerOpen(GravityCompat.START)){
+            main_drawer_layout.closeDrawers()
+            // 테스트를 위해 뒤로가기 버튼시 Toast 메시지
+            Toast.makeText(this,"back btn clicked",Toast.LENGTH_SHORT).show()
+        } else{
+            super.onBackPressed()
+        }
+    }
 
     private fun signOut() { // 로그아웃
         // Firebase sign out
@@ -50,4 +93,5 @@ class InfoActivity : AppCompatActivity() {
         startActivity(Intent(this, GoogleSignInActivity::class.java))
         finish()
     }
+
 }
