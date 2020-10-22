@@ -49,7 +49,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         firebaseAuth = FirebaseAuth.getInstance()
 
         //나중에 로그아웃 기능 구현할때 다시보자
-        signout_button.setOnClickListener{signOut()}
+//        signout_button.setOnClickListener{signOut()}
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

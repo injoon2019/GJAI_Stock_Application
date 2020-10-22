@@ -13,7 +13,9 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/info_main_layout" />
+        layout="@layout/info_main_layout"
+        />
+
 
     <!--자식 레이아웃. Navigation Drawer-->
     <com.google.android.material.navigation.NavigationView
@@ -26,9 +28,5 @@
 
     </com.google.android.material.navigation.NavigationView>
 
-    <Button
-        android:id="@+id/signout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그아웃" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

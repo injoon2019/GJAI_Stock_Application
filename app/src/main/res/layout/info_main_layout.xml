@@ -15,4 +15,5 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="메인 레이아웃" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
