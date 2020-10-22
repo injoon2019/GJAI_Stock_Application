@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="220dp"
     android:padding="20dp"
     android:orientation="vertical">
 
@@ -11,6 +11,7 @@
         android:id="@+id/header_icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_baseline_account_circle_24"/>
 
     <TextView

@@ -5,9 +5,11 @@
         android:title = "내 정보"
         />
     <item android:id = "@+id/item2"
+        android:icon = "@drawable/ic_baseline_redeem_24"
         android:title = "선물함"
         />
     <item android:id = "@+id/item3"
+        android:icon = "@drawable/ic_baseline_home_24"
         android:title = "로그아웃"
         />
 </menu>
