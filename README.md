@@ -48,6 +48,7 @@ com.google.android.gms.common.api.ApiException: 10:
 3. 자동완성 검색창 참고 사이트_1 : https://velog.io/@dev_2dong/Android-AutoCompleteTextView%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EA%B2%80%EC%83%89%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 4. 자동완성 검색창 참고 사이트_2 : https://developer.android.com/reference/kotlin/android/widget/AutoCompleteTextView
 
+5. 파이어베이스 사용자 정보 및 토큰 가져오는 방법 : https://firebase.google.com/docs/auth/android/manage-users?hl=ko#kotlin_5
 ------
 
 
