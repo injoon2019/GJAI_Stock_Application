@@ -3,6 +3,7 @@ package com.example.eggmoney
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
@@ -65,8 +66,13 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             // FirebaseUser.getToken() instead.
             val uid = user.uid
 
-            Toast.makeText(this, user.email.toString(), Toast.LENGTH_SHORT)
         }
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("TAG", "Email sent.")
+                }
+            }
 
 
 
