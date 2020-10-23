@@ -43,6 +43,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24) // 홈버튼 이미지 변경
         supportActionBar?.setDisplayShowTitleEnabled(false) // 툴바에 타이틀 안보이게
 
+        main_navigationView.setNavigationItemSelectedListener(this)
+
         //네비게이션 헤더 가져오는 부분
         val navigationView : NavigationView  = findViewById(R.id.main_navigationView)
         val headerView : View = navigationView.getHeaderView(0)
