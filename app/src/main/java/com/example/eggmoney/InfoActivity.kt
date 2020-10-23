@@ -43,6 +43,12 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24) // 홈버튼 이미지 변경
         supportActionBar?.setDisplayShowTitleEnabled(false) // 툴바에 타이틀 안보이게
 
+        //네비게이션 헤더 가져오는 부분
+        val navigationView : NavigationView  = findViewById(R.id.main_navigationView)
+        val headerView : View = navigationView.getHeaderView(0)
+        val navUsername : TextView = headerView.findViewById(R.id.user_name)
+        val navUserEmail : TextView = headerView.findViewById(R.id.user_email)
+
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -66,7 +72,18 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val photoUrl = user.photoUrl
 
             // Check if user's email is verified
+            //이메일 인증하기
             val emailVerified = user.isEmailVerified
+            if (!emailVerified){
+                Toast.makeText(this, "이메일 인증을 완료해주세요", Toast.LENGTH_SHORT).show()
+                user?.sendEmailVerification()
+                    ?.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d("TAG", "Email sent.")
+                        }
+                    }
+            }
+
 
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
@@ -75,27 +92,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         }
 
-        
-        val navigationView : NavigationView  = findViewById(R.id.main_navigationView)
-        val headerView : View = navigationView.getHeaderView(0)
-        val navUsername : TextView = headerView.findViewById(R.id.user_name)
-        val navUserEmail : TextView = headerView.findViewById(R.id.user_email)
-
+        //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
-
-        //이메일 인증하기
-//        user?.sendEmailVerification()
-//            ?.addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    Log.d("TAG", "Email sent.")
-//                }
-//            }
-
-//        findViewById(R.id.user_email)
-//        info_user_email = findViewById(R.id.user_email)
-//        info_user_email.text = user?.email.toString()
-//        R.id.user_name.setText(user?.displayName.toString())
 
 
     }
