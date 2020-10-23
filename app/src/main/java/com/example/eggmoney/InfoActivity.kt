@@ -107,9 +107,12 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val user = FirebaseAuth.getInstance().currentUser
 
         when(item.itemId){
-            R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
-            R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show()
-            R.id.item3->  Toast.makeText(this, user?.email.toString(), Toast.LENGTH_SHORT).show()
+            R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show() //내정보
+            R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show() //선물함
+            R.id.item3->  Toast.makeText(this, user?.email.toString(), Toast.LENGTH_SHORT).show()//쿠폰등록
+            R.id.item2_1->  Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
+//            R.id.item2_2->  Toast.makeText(this, "로그아웃", Toast.LENGTH_SHORT).show() //로그아웃
+            R.id.item2_2->  signOut() //로그아웃
         }
         return false
     }

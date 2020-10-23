@@ -14,7 +14,22 @@
             android:title = "선물함"
             />
         <item android:id = "@+id/item3"
-            android:icon = "@drawable/ic_baseline_home_24"
+            android:icon = "@drawable/ic_baseline_post_add_24"
+            android:title = "쿠폰 등록"
+            />
+    </group>
+
+    <group
+        android:id="@+id/menu_02"
+        android:checkableBehavior="single">
+
+        <item android:id = "@+id/item2_1"
+            android:icon = "@drawable/ic_baseline_settings_24"
+            android:title = "환경 설정"
+            />
+
+        <item android:id = "@+id/item2_2"
+            android:icon = "@drawable/ic_baseline_settings_power_24"
             android:title = "로그아웃"
             />
     </group>
