@@ -4,8 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatViewInflater
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -14,7 +19,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_info.*
+import kotlinx.android.synthetic.main.info_drawer_header.*
 import kotlinx.android.synthetic.main.info_toolbar.*
+import org.w3c.dom.Text
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -22,6 +29,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var firebaseAuth: FirebaseAuth
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
+
+
+    private lateinit var info_user_email : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,13 +77,19 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val uid = user.uid
 
         }
-        user?.sendEmailVerification()
-            ?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("TAG", "Email sent.")
-                }
-            }
 
+        //이메일 인증하기
+//        user?.sendEmailVerification()
+//            ?.addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    Log.d("TAG", "Email sent.")
+//                }
+//            }
+
+//        findViewById(R.id.user_email)
+//        info_user_email = findViewById(R.id.user_email)
+//        info_user_email.text = user?.email.toString()
+//        R.id.user_name.setText(user?.displayName.toString())
 
 
     }

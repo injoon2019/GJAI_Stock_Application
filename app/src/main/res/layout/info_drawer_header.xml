@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="220dp"
     android:padding="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFF2E6">
+
 
     <ImageView
         android:id="@+id/header_icon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_baseline_account_circle_24"/>
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_baseline_account_circle_24"
+        app:layout_constraintBottom_toTopOf="@+id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033" />
 
     <TextView
+        android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="김멋사"
+        android:textColor="#000000"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="#000000"
-        android:text="김멋사"/>
+        app:layout_constraintBottom_toTopOf="@+id/user_email"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="16dp"
+        android:text="010-1234-5678"
         android:textColor="#EB554C4C"
-        android:text="010-1234-5678"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
