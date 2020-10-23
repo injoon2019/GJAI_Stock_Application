@@ -38,4 +38,13 @@ com.google.android.gms.common.api.ApiException: 10:
 다른 노트북 개발 환경 추가
 프로젝트 개요 옆 톱니바퀴 -> 내 앱(맨 밑) -> SHA 인증서 지문 추가
 
+
+# 참고 사이트
+
+네비게이션 드로어 참고 블로그 : https://bongcando.tistory.com/4
+네비게이션 드로어 헤더 textview 바꾸는 방법 https://stackoverflow.com/questions/34973456/how-to-change-text-of-a-textview-in-navigation-drawer-header
+
+------
+
+
 ------
