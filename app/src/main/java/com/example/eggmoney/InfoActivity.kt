@@ -22,7 +22,6 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -50,6 +49,27 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         //나중에 로그아웃 기능 구현할때 다시보자
 //        signout_button.setOnClickListener{signOut()}
+
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = user.displayName
+            val email = user.email
+            val photoUrl = user.photoUrl
+
+            // Check if user's email is verified
+            val emailVerified = user.isEmailVerified
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            val uid = user.uid
+
+            Toast.makeText(this, user.email.toString(), Toast.LENGTH_SHORT)
+        }
+
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,10 +82,12 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val user = FirebaseAuth.getInstance().currentUser
+
         when(item.itemId){
             R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show()
             R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show()
-            R.id.item3-> Toast.makeText(this,"item3 clicked", Toast.LENGTH_SHORT).show()
+            R.id.item3->  Toast.makeText(this, user?.email.toString(), Toast.LENGTH_SHORT).show()
         }
         return false
     }
