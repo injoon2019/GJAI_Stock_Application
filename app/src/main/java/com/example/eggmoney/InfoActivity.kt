@@ -2,6 +2,8 @@ package com.example.eggmoney
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Canvas
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.AttributeSet
@@ -16,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatViewInflater
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -35,19 +38,32 @@ import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.item_recyclerview.*
+import kotlinx.android.synthetic.main.item_recyclerview.view.*
 
-class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
+
+class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
+
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    //recyclerView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        var suggestion = arrayOf("삼성전자","LG전자","나무기술")  // 자동완성 검색기능 부분
-        var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,suggestion)
+        recyclerView = findViewById(R.id.recyclerView) // recyclerView 부분
+        recyclerView.adapter = MainRecyclerViewAdapter()
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+        var suggestion = arrayOf("삼성전자", "LG전자", "나무기술")  // 자동완성 검색기능 부분
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 2
         autocomplete_stock.setAdapter(adapter)
 
@@ -60,10 +76,10 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         main_navigationView.setNavigationItemSelectedListener(this)
 
         //네비게이션 헤더 가져오는 부분
-        val navigationView : NavigationView  = findViewById(R.id.main_navigationView)
-        val headerView : View = navigationView.getHeaderView(0)
-        val navUsername : TextView = headerView.findViewById(R.id.user_name)
-        val navUserEmail : TextView = headerView.findViewById(R.id.user_email)
+        val navigationView: NavigationView = findViewById(R.id.main_navigationView)
+        val headerView: View = navigationView.getHeaderView(0)
+        val navUsername: TextView = headerView.findViewById(R.id.user_name)
+        val navUserEmail: TextView = headerView.findViewById(R.id.user_email)
 
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
@@ -90,7 +106,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             // Check if user's email is verified
             //이메일 인증하기
             val emailVerified = user.isEmailVerified
-            if (!emailVerified){
+            if (!emailVerified) {
                 Toast.makeText(this, "이메일 인증을 완료해주세요", Toast.LENGTH_SHORT).show()
                 user?.sendEmailVerification()
                     ?.addOnCompleteListener { task ->
@@ -136,7 +152,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                         buffered.close()
                         urlConnection.disconnect()
                         runOnUiThread{
-                            textContent.text = content.toString()
+                            recyclerView_text.text = content.toString()
                         }
                     }
                 }catch (e:Exception){
@@ -149,8 +165,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            android.R.id.home->{ // 메뉴 버튼
+        when (item.itemId) {
+            android.R.id.home -> { // 메뉴 버튼
                 main_drawer_layout.openDrawer(GravityCompat.START)    // 네비게이션 드로어 열기
             }
         }
@@ -160,24 +176,24 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val user = FirebaseAuth.getInstance().currentUser
 
-        when(item.itemId){
-            R.id.account-> Toast.makeText(this,"account clicked",Toast.LENGTH_SHORT).show() //내정보
-            R.id.item2-> Toast.makeText(this,"item2 clicked",Toast.LENGTH_SHORT).show() //선물함
-            R.id.item3-> {  //쿠폰 등록
+        when (item.itemId) {
+            R.id.account -> Toast.makeText(this, "account clicked", Toast.LENGTH_SHORT).show() //내정보
+            R.id.item2 -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show() //선물함
+            R.id.item3 -> {  //쿠폰 등록
                 startActivity(Intent(this, RegisterCouponActivity::class.java))
             }
-            R.id.item2_1->  Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
-            R.id.item2_2->  signOut() //로그아웃
+            R.id.item2_1 -> Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
+            R.id.item2_2 -> signOut() //로그아웃
         }
         return false
     }
 
     override fun onBackPressed() { //뒤로가기 처리
-        if(main_drawer_layout.isDrawerOpen(GravityCompat.START)){
+        if (main_drawer_layout.isDrawerOpen(GravityCompat.START)) {
             main_drawer_layout.closeDrawers()
             // 테스트를 위해 뒤로가기 버튼시 Toast 메시지
-            Toast.makeText(this,"back btn clicked",Toast.LENGTH_SHORT).show()
-        } else{
+            Toast.makeText(this, "back btn clicked", Toast.LENGTH_SHORT).show()
+        } else {
             super.onBackPressed()
         }
     }
@@ -195,4 +211,54 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         finish()
     }
 
+    private class MainRecyclerViewAdapter :
+        RecyclerView.Adapter<MainRecyclerViewViewHolder>() { //RecyclerView 부분
+        override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int
+        ): MainRecyclerViewViewHolder {
+            val itemView = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_recyclerview, parent, false)
+            return MainRecyclerViewViewHolder(itemView)
+        }
+
+        override fun onBindViewHolder(holder: MainRecyclerViewViewHolder, position: Int) {
+            holder.setTitle((position + 1).toString() + "번째 아이템입니다.")
+        }
+
+        override fun getItemCount(): Int {
+            return 5
+        }
+    }
+
+    private class MainRecyclerViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val title: TextView = itemView.findViewById(R.id.title)
+
+        fun setTitle(title: String) {
+            this.title.text = title
+        }
+
+        private class DivideDecoration(context: Context) : RecyclerView.ItemDecoration() {
+
+            private val paint: Paint = Paint()
+
+            init {
+                paint.strokeWidth = context.resources.displayMetrics.density * 5
+            }
+
+            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+                for (i in 0 until parent.childCount) {
+                    val view = parent.getChildAt(i)
+                    c.drawLine(
+                        view.left.toFloat(),
+                        view.bottom.toFloat(),
+                        view.right.toFloat(),
+                        view.bottom.toFloat(),
+                        paint
+                    )
+                }
+            }
+        }
+    }
 }
