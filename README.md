@@ -50,6 +50,10 @@ com.google.android.gms.common.api.ApiException: 10:
 
 
 5. 파이어베이스 사용자 정보 및 토큰 가져오는 방법 : https://firebase.google.com/docs/auth/android/manage-users?hl=ko#kotlin_5
+
+6. 리사이클러 뷰 : https://github.com/dalinaum/android-book-example/tree/1st/06-02-itemdecoration 
+                  https://github.com/dalinaum/android-book-example/tree/1st/06-01-recyclerview
+  
 ------
 
 
