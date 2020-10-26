@@ -24,10 +24,10 @@
             android:completionThreshold="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/search_button"/>
+            app:layout_constraintEnd_toStartOf="@id/searchRequest_button"/>
 
         <ImageView
-            android:id="@+id/search_button"
+            android:id="@+id/searchRequest_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

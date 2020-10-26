@@ -11,6 +11,7 @@
 
     <!-- 메인 view -->
     <TextView
+        android:id="@+id/textContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

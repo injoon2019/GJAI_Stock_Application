@@ -24,8 +24,16 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.info_drawer_header.*
 import kotlinx.android.synthetic.main.info_drawer_header.view.*
+import kotlinx.android.synthetic.main.info_main_layout.*
 import kotlinx.android.synthetic.main.info_toolbar.*
 import org.w3c.dom.Text
+import java.io.BufferedReader
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.lang.Exception
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlin.concurrent.thread
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -104,6 +112,38 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
 
+        //서치 버튼 - 네트워크 작업 요청
+        searchRequest_button.setOnClickListener{
+            Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
+            thread(start=true){
+                try{
+                    var stockName = autocomplete_stock.text.toString()
+                    if (!stockName.startsWith("https")){
+                        stockName = "https://${stockName}"
+                    }
+                    val url = URL(stockName)
+                    val urlConnection = url.openConnection() as HttpURLConnection
+                    urlConnection.requestMethod = "GET"
+                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK){
+                        val streamReader = InputStreamReader(urlConnection.inputStream)
+                        val buffered = BufferedReader(streamReader)
+
+                        val content = StringBuilder()
+                        while (true){
+                            val line = buffered.readLine() ?: break
+                            content.append(line)
+                        }
+                        buffered.close()
+                        urlConnection.disconnect()
+                        runOnUiThread{
+                            textContent.text = content.toString()
+                        }
+                    }
+                }catch (e:Exception){
+                    e.printStackTrace()
+                }
+            }
+        }
 
     }
 
