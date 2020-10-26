@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text="아이템 제목"
-        app:layout_constraintBottom_toTopOf="@id/text"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
