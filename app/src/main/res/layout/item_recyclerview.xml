@@ -3,28 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/colorIvory"
-    android:padding="10dp">
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#F1DBDB"
+    android:padding="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="아이템 제목"
-        app:layout_constraintBottom_toTopOf="@id/text"
+        android:layout_marginStart="4dp"
+        android:background="#F1DBDB"
+        android:text="주식종목"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/recyclerView_text"
-        android:layout_width="345dp"
-        android:layout_height="233dp"
-        android:layout_marginTop="10dp"
-        android:text="이것은 본문입니다"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/recyclerView_image"
+        android:layout_width="wrap_content"
+        android:layout_height="126dp"
+        android:background="#F1DBDB"
+        android:src="@drawable/stockchart_example"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        tools:layout_editor_absoluteY="50dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

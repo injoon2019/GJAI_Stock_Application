@@ -61,6 +61,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         recyclerView.adapter = MainRecyclerViewAdapter()
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
+        //recyclerView.addItemDecoration(DivideDecoration(this)) // 밑줄 추가하기
 
         var suggestion = arrayOf("삼성전자", "LG전자", "나무기술")  // 자동완성 검색기능 부분
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
@@ -129,33 +130,34 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUserEmail.text = user?.email.toString()
 
         //서치 버튼 - 네트워크 작업 요청
-        searchRequest_button.setOnClickListener{
+        searchRequest_button.setOnClickListener {
             Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
-            thread(start=true){
-                try{
+            thread(start = true) {
+                try {
                     var stockName = autocomplete_stock.text.toString()
-                    if (!stockName.startsWith("https")){
+                    if (!stockName.startsWith("https")) {
                         stockName = "https://${stockName}"
                     }
                     val url = URL(stockName)
                     val urlConnection = url.openConnection() as HttpURLConnection
                     urlConnection.requestMethod = "GET"
-                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK){
+                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
                         val streamReader = InputStreamReader(urlConnection.inputStream)
                         val buffered = BufferedReader(streamReader)
 
                         val content = StringBuilder()
-                        while (true){
+                        while (true) {
                             val line = buffered.readLine() ?: break
                             content.append(line)
                         }
                         buffered.close()
                         urlConnection.disconnect()
-                        runOnUiThread{
-                            recyclerView_text.text = content.toString()
+                        runOnUiThread {
+
+                            //recyclerView_image.image = content.toString()
                         }
                     }
-                }catch (e:Exception){
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
@@ -227,7 +229,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
         override fun getItemCount(): Int {
-            return 5
+            return 10
         }
     }
 
@@ -238,27 +240,28 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         fun setTitle(title: String) {
             this.title.text = title
         }
-
-        private class DivideDecoration(context: Context) : RecyclerView.ItemDecoration() {
-
-            private val paint: Paint = Paint()
-
-            init {
-                paint.strokeWidth = context.resources.displayMetrics.density * 5
-            }
-
-            override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-                for (i in 0 until parent.childCount) {
-                    val view = parent.getChildAt(i)
-                    c.drawLine(
-                        view.left.toFloat(),
-                        view.bottom.toFloat(),
-                        view.right.toFloat(),
-                        view.bottom.toFloat(),
-                        paint
-                    )
-                }
-            }
-        }
     }
+
+//    private class DivideDecoration(context: Context) : RecyclerView.ItemDecoration() {  // 밑줄 추가하기
+//
+//        private val paint: Paint = Paint()
+//
+//        init {
+//            paint.strokeWidth = context.resources.displayMetrics.density * 5
+//        }
+//
+//        override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+//            for (i in 0 until parent.childCount) {
+//                val view = parent.getChildAt(i)
+//                c.drawLine(
+//                    view.left.toFloat(),
+//                    view.bottom.toFloat(),
+//                    view.right.toFloat(),
+//                    view.bottom.toFloat(),
+//                    paint
+//                )
+//            }
+//        }
+//    }
 }
+
