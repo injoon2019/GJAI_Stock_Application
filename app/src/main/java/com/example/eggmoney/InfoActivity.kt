@@ -186,7 +186,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return 5
         }
     }
 
