@@ -40,7 +40,8 @@ com.google.android.gms.common.api.ApiException: 10:
 
 
 # 참고 사이트
-
+  
+## 안드로이드
 
 1. 네비게이션 드로어 참고 블로그 : https://bongcando.tistory.com/4
 2. 네비게이션 드로어 헤더 textview 바꾸는 방법 https://stackoverflow.com/questions/34973456/how-to-change-text-of-a-textview-in-navigation-drawer-header
@@ -55,6 +56,10 @@ com.google.android.gms.common.api.ApiException: 10:
                   https://github.com/dalinaum/android-book-example/tree/1st/06-01-recyclerview
   
 ------
+## 서버
 
+1. Node.js, 프로젝트 (express) 시작 : https://jongmin92.github.io/2017/05/17/Emily/3-make-express-project/
+2. Node.js, Google Cloud Platform의 SQL(mySQL) 연결하기 : https://poiemaweb.com/nodejs-mysql
+3. Node.js, Google Cloud Platform의 App Engine 배포하기 : (자체 블로그 제작 예정)
 
 ------

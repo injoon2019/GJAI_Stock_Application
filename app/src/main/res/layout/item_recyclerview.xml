@@ -23,6 +23,7 @@
         android:background="#F1DBDB"
         android:text="주식종목"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView_image"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
