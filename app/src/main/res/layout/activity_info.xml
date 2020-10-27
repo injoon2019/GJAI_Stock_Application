@@ -7,12 +7,16 @@
     android:id="@+id/main_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable = "true"
+    android:focusableInTouchMode = "true"
     android:fitsSystemWindows="true">
 
     <!--메인 레이아웃-->
     <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable = "true"
+        android:focusableInTouchMode = "true"
         layout="@layout/info_main_layout"
         />
 
@@ -23,6 +27,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="left"
+        android:focusable = "true"
+        android:focusableInTouchMode = "true"
         app:headerLayout="@layout/info_drawer_header"
         app:menu="@menu/info_drawer_navigation">
 

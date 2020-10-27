@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
@@ -41,6 +42,7 @@ import kotlin.concurrent.thread
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.item_recyclerview.*
 import kotlinx.android.synthetic.main.item_recyclerview.view.*
+
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -125,6 +127,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         }
 
+
         //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
@@ -169,6 +172,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> { // 메뉴 버튼
+                //햄버거 버튼을 누르면 키보드를 항상 숨기게 설정
+                hideKeyboard()
                 main_drawer_layout.openDrawer(GravityCompat.START)    // 네비게이션 드로어 열기
             }
         }
@@ -242,26 +247,11 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         }
     }
 
-//    private class DivideDecoration(context: Context) : RecyclerView.ItemDecoration() {  // 밑줄 추가하기
-//
-//        private val paint: Paint = Paint()
-//
-//        init {
-//            paint.strokeWidth = context.resources.displayMetrics.density * 5
-//        }
-//
-//        override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-//            for (i in 0 until parent.childCount) {
-//                val view = parent.getChildAt(i)
-//                c.drawLine(
-//                    view.left.toFloat(),
-//                    view.bottom.toFloat(),
-//                    view.right.toFloat(),
-//                    view.bottom.toFloat(),
-//                    paint
-//                )
-//            }
-//        }
-//    }
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(autocomplete_stock.windowToken, 0);
+    }
+
+
 }
 
