@@ -54,6 +54,8 @@ com.google.android.gms.common.api.ApiException: 10:
 
 6. 리사이클러 뷰 : https://github.com/dalinaum/android-book-example/tree/1st/06-02-itemdecoration 
                   https://github.com/dalinaum/android-book-example/tree/1st/06-01-recyclerview
+
+7. 키보드 숨김 기능 : https://black-jin0427.tistory.com/68
   
 ------
 ## 서버
