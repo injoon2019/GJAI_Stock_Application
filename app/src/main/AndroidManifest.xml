@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SearchResultActivity"></activity>
         <activity
             android:name=".CouponRegisterActivity"
             android:label="@string/title_activity_coupon_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CouponActivity"
             android:label="@string/title_activity_coupon"

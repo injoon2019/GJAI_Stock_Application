@@ -132,38 +132,14 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
 
-        //서치 버튼 - 네트워크 작업 요청
+        //서치 버튼 - SearchResultActivity로 검색한 종목 이름을 넘긴다
         searchRequest_button.setOnClickListener {
+
+            val intent = Intent(this, SearchResultActivity::class.java)
             Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
-            thread(start = true) {
-                try {
-                    var stockName = autocomplete_stock.text.toString()
-                    if (!stockName.startsWith("https")) {
-                        stockName = "https://${stockName}"
-                    }
-                    val url = URL(stockName)
-                    val urlConnection = url.openConnection() as HttpURLConnection
-                    urlConnection.requestMethod = "GET"
-                    if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
-                        val streamReader = InputStreamReader(urlConnection.inputStream)
-                        val buffered = BufferedReader(streamReader)
+            intent.putExtra("stock_name", autocomplete_stock.text.toString())
 
-                        val content = StringBuilder()
-                        while (true) {
-                            val line = buffered.readLine() ?: break
-                            content.append(line)
-                        }
-                        buffered.close()
-                        urlConnection.disconnect()
-                        runOnUiThread {
-
-                            //recyclerView_image.image = content.toString()
-                        }
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
+            startActivity(intent)
         }
 
     }
