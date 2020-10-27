@@ -60,4 +60,16 @@
 <!--            tools:layout_editor_absoluteY="50dp" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/activity_search_gift_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:drawableLeft="@drawable/ic_baseline_redeem_24"
+        android:text="선물하기"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_result_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>

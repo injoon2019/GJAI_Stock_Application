@@ -7,7 +7,7 @@
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -17,11 +17,6 @@
             android:name=".CouponRegisterActivity"
             android:label="@string/title_activity_coupon_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".CouponActivity"
-            android:label="@string/title_activity_coupon"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RegisterCouponActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".GoogleSignInActivity" />
