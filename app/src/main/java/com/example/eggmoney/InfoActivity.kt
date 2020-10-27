@@ -182,7 +182,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.account -> Toast.makeText(this, "account clicked", Toast.LENGTH_SHORT).show() //내정보
             R.id.item2 -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show() //선물함
             R.id.item3 -> {  //쿠폰 등록
-                startActivity(Intent(this, RegisterCouponActivity::class.java))
+                startActivity(Intent(this, CouponRegisterActivity::class.java))
             }
             R.id.item2_1 -> Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
             R.id.item2_2 -> signOut() //로그아웃
