@@ -1,5 +1,16 @@
 package com.example.eggmoney
 
+<<<<<<< HEAD
+import android.content.Intent
+import android.database.Cursor
+import android.os.Build
+import android.os.Bundle
+import android.provider.ContactsContract
+import android.provider.Telephony.Mms.Addr.CONTACT_ID
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+=======
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +22,7 @@ import android.provider.ContactsContract
 import android.view.View
 import android.widget.TextView
 
+>>>>>>> a619e6645a8baa78684a24bd9a1cbf3795ab09da
 import kotlinx.android.synthetic.main.activity_search_result.*
 
 
@@ -35,6 +47,7 @@ class SearchResultActivity : AppCompatActivity() {
             // TODO: 전화번호 받으면 그걸로 SMS로 난수코드 보내기
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
