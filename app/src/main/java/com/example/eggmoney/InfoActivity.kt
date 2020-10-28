@@ -126,6 +126,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val uid = user.uid
 
         }
+//        Toast.makeText(this, user?.uid.toString(), Toast.LENGTH_SHORT).show()
 
 
         //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
