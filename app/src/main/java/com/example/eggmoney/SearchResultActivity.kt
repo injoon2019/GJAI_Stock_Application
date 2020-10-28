@@ -8,18 +8,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_search_result.*
-import android.provider.ContactsContract
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.loader.app.LoaderManager
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.SimpleCursorAdapter
-import android.widget.Toast
-import androidx.loader.content.Loader
-import kotlinx.android.synthetic.main.info_toolbar.*
 
 
 class SearchResultActivity : AppCompatActivity() {
@@ -33,7 +21,7 @@ class SearchResultActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_PICK);
             intent.setData(Uri.parse("content://com.android.contacts/data/phones"));
             startActivityForResult(intent, 10);
-            
+
 //            var id:String = Uri.parse(data.getDataString()).getLastPathSegment();
 
 
