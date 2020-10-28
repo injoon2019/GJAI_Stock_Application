@@ -56,6 +56,9 @@ com.google.android.gms.common.api.ApiException: 10:
                   https://github.com/dalinaum/android-book-example/tree/1st/06-01-recyclerview
 
 7. 키보드 숨김 기능 : https://black-jin0427.tistory.com/68
+
+8. 연락처 가져와서 메시지 보내기 기능 : https://question0.tistory.com/22
+                                      https://kkangsnote.tistory.com/41
   
 ------
 ## 서버
