@@ -1,5 +1,6 @@
 package com.example.eggmoney
 
+<<<<<<< HEAD
 import android.content.Intent
 import android.database.Cursor
 import android.os.Build
@@ -9,6 +10,19 @@ import android.provider.Telephony.Mms.Addr.CONTACT_ID
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+=======
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
+
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.provider.ContactsContract
+import android.view.View
+import android.widget.TextView
+
+>>>>>>> a619e6645a8baa78684a24bd9a1cbf3795ab09da
 import kotlinx.android.synthetic.main.activity_search_result.*
 
 
@@ -23,7 +37,8 @@ class SearchResultActivity : AppCompatActivity() {
 
         activity_search_gift_button.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK);
-            intent.data = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+            intent.setData(Uri.parse("content://com.android.contacts/data/phones"));
+            startActivityForResult(intent, 10);
 
 
             // TODO: 전화번호부 가져오기
@@ -34,6 +49,43 @@ class SearchResultActivity : AppCompatActivity() {
     }
 
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            sendSMS(data!!, sendMsg)
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun sendSMS(data: Intent, msg: String) {
+
+        with(contentResolver) {
+            data.data?.let {
+                query(
+                    it, arrayOf(
+                        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                        ContactsContract.CommonDataKinds.Phone.NUMBER
+                    ), null, null, null
+                )
+            }
+        }?.apply {
+            moveToFirst()
+            val name = getString(0)     //0은 이름을 얻어옵니다.
+            val number = getString(1)   //1은 번호를 받아옵니다.
+
+            close()
+
+            (findViewById<View>(R.id.activity_search_gift_button) as TextView).text = "name : $name number : $number"
+
+            val n = Uri.parse("smsto: $number")
+            val intent = Intent(Intent.ACTION_SENDTO, n)
+            intent.putExtra("sms_body", msg)
+            startActivity(intent)
+        }
+    }
 }
+
 
 
