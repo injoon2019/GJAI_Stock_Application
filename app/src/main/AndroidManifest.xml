@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchResultActivity"></activity>
+        <activity android:name=".MyinfoActivity"></activity>
+        <activity android:name=".SearchResultActivity" />
         <activity
             android:name=".CouponRegisterActivity"
             android:label="@string/title_activity_coupon_register"
