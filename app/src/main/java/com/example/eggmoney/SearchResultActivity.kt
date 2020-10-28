@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_search_result.*
 
 
 class SearchResultActivity : AppCompatActivity() {
-    private var sendMsg = ""
+    private var sendMsg = "안녕하세요 ~ 보겠습    "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
