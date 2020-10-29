@@ -59,6 +59,9 @@ com.google.android.gms.common.api.ApiException: 10:
 
 8. 연락처 가져와서 메시지 보내기 기능 : https://question0.tistory.com/22
                                       https://kkangsnote.tistory.com/41
+                                      
+9. 안드로이드 asset 폴더 추가하기  :  https://recipes4dev.tistory.com/125
+10. 코틀린 while 반복문 참고 : https://hamzzibari.tistory.com/108
   
 ------
 ## 서버
