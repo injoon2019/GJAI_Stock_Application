@@ -2,11 +2,8 @@ package com.example.eggmoney
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Canvas
-import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -16,9 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatViewInflater
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -26,23 +21,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_info.*
-import kotlinx.android.synthetic.main.info_drawer_header.*
-import kotlinx.android.synthetic.main.info_drawer_header.view.*
-import kotlinx.android.synthetic.main.info_main_layout.*
 import kotlinx.android.synthetic.main.info_toolbar.*
-import org.w3c.dom.Text
-import java.io.BufferedReader
 import java.io.InputStream
-import java.io.InputStreamReader
 import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.URL
-import kotlin.concurrent.thread
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.item_recyclerview.*
-import kotlinx.android.synthetic.main.item_recyclerview.view.*
+import org.apache.poi.hssf.usermodel.HSSFCell
+import org.apache.poi.hssf.usermodel.HSSFRow
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.poifs.filesystem.POIFSFileSystem
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -140,9 +128,62 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
             intent.putExtra("stock_name", autocomplete_stock.text.toString())
 
+            // 넘겨주기
+            readExcelFileFromAssets(autocomplete_stock.text.toString())
+            // csv 파일 이용해 종목 코드 넘겨주기
             startActivity(intent)
         }
 
+    }
+
+    private fun readExcelFileFromAssets(value: String) {
+        try {
+            val myInput: InputStream
+            // assetManager 초기 설정
+            val assetManager = assets
+            //  엑셀 시트 열기
+            myInput = assetManager.open("stock_symbol_name.xls")
+            Log.d("checking", " items: " + myInput)
+            // POI File System 객체 만들기
+            val myFileSystem = POIFSFileSystem(myInput)
+            //워크 북
+            val myWorkBook = HSSFWorkbook(myFileSystem)
+            // 워크북에서 시트 가져오기
+            val sheet = myWorkBook.getSheetAt(0)
+            //행을 반복할 변수 만들어주기
+            val rowIter = sheet.rowIterator()
+            //행 넘버 변수 만들기
+            var rowno = 0
+            // 확인 가능한 배열 생성
+            var answer_array: Array<String> = arrayOf(value,"퇴근시켜줘 제발" )
+
+            while (rowIter.hasNext()) {
+                if (answer_array[1] != "퇴근시켜줘 제발") break
+                val myRow = rowIter.next() as HSSFRow
+                if (rowno != 0) {
+                    //열을 반복할 변수 만들어주기
+                    val cellIter = myRow.cellIterator()
+                    //열 넘버 변수 만들기
+                    var colno = 0
+                    //열 반복문
+                    while (cellIter.hasNext()) {
+                        val myCell = cellIter.next() as HSSFCell
+                        if (colno === 0){
+                            if (myCell.toString() != value) break
+                        }
+                        if (colno === 1) {
+                            answer_array[1] = myCell.toString()
+                        }
+                        colno++
+                    }
+                }
+                rowno++
+            }
+
+            Toast.makeText(this, answer_array[1], Toast.LENGTH_LONG).show() // 확인메시지 출력
+        } catch (e: Exception) {
+            Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
+        }
     }
 
 
