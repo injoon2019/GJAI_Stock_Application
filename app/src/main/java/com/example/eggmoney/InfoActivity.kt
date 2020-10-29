@@ -53,9 +53,10 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         recyclerView.layoutManager = layoutManager
         //recyclerView.addItemDecoration(DivideDecoration(this)) // 밑줄 추가하기
 
-        var suggestion = arrayOf("삼성전자", "LG전자", "나무기술")  // 자동완성 검색기능 부분
+        val suggestion = resources.getStringArray(R.array.stock_list)// 자동완성 검색기능 부분
+
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
-        autocomplete_stock.threshold = 2
+        autocomplete_stock.threshold = 1
         autocomplete_stock.setAdapter(adapter)
 
 
@@ -129,8 +130,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             intent.putExtra("stock_name", autocomplete_stock.text.toString())
 
             // 넘겨주기
-            readExcelFileFromAssets(autocomplete_stock.text.toString())
-            // csv 파일 이용해 종목 코드 넘겨주기
+            readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
             startActivity(intent)
         }
 
@@ -143,7 +143,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val assetManager = assets
             //  엑셀 시트 열기
             myInput = assetManager.open("stock_symbol_name.xls")
-            Log.d("checking", " items: " + myInput)
+
             // POI File System 객체 만들기
             val myFileSystem = POIFSFileSystem(myInput)
             //워크 북
