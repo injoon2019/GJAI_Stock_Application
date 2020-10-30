@@ -34,14 +34,9 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
-    //firebase Auth
-    private lateinit var firebaseAuth: FirebaseAuth
-
-    //google client
-    private lateinit var googleSignInClient: GoogleSignInClient
-
-    //recyclerView
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var firebaseAuth: FirebaseAuth //firebase Auth
+    private lateinit var googleSignInClient: GoogleSignInClient //google client
+    private lateinit var recyclerView: RecyclerView //recyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +49,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         //recyclerView.addItemDecoration(DivideDecoration(this)) // 밑줄 추가하기
 
         val suggestion = resources.getStringArray(R.array.stock_list)// 자동완성 검색기능 부분
-
         var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 1
         autocomplete_stock.setAdapter(adapter)
-
 
         setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 드로어를 꺼낼 홈 버튼 활성화
@@ -73,7 +66,6 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val navUsername: TextView = headerView.findViewById(R.id.user_name)
         val navUserEmail: TextView = headerView.findViewById(R.id.user_email)
 
-
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -84,9 +76,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        //firebase auth 객체
-        firebaseAuth = FirebaseAuth.getInstance()
-
+        firebaseAuth = FirebaseAuth.getInstance() //firebase auth 객체
 
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
@@ -108,15 +98,12 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                     }
             }
 
-
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             val uid = user.uid
-
         }
 //        Toast.makeText(this, user?.uid.toString(), Toast.LENGTH_SHORT).show()
-
 
         //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
         navUsername.text = user?.displayName.toString()
@@ -133,40 +120,28 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
             startActivity(intent)
         }
-
     }
 
     private fun readExcelFileFromAssets(value: String) {
         try {
-            val myInput: InputStream
-            // assetManager 초기 설정
-            val assetManager = assets
-            //  엑셀 시트 열기
+            val myInput: InputStream // assetManager 초기 설정
+            val assetManager = assets  //  엑셀 시트 열기
             myInput = assetManager.open("stock_symbol_name.xls")
 
-            // POI File System 객체 만들기
-            val myFileSystem = POIFSFileSystem(myInput)
-            //워크 북
-            val myWorkBook = HSSFWorkbook(myFileSystem)
-            // 워크북에서 시트 가져오기
-            val sheet = myWorkBook.getSheetAt(0)
-            //행을 반복할 변수 만들어주기
-            val rowIter = sheet.rowIterator()
-            //행 넘버 변수 만들기
-            var rowno = 0
-            // 확인 가능한 배열 생성
-            var answer_array: Array<String> = arrayOf(value,"퇴근시켜줘 제발" )
+            val myFileSystem = POIFSFileSystem(myInput) // POI File System 객체 만들기
+            val myWorkBook = HSSFWorkbook(myFileSystem) //워크 북
+            val sheet = myWorkBook.getSheetAt(0) // 워크북에서 시트 가져오기
+            val rowIter = sheet.rowIterator() //행을 반복할 변수 만들어주기
+            var rowno = 0 //행 넘버 변수 만들기
+            var answer_array: Array<String> = arrayOf(value,"퇴근시켜줘 제발" ) // 확인 가능한 배열 생성
 
             while (rowIter.hasNext()) {
                 if (answer_array[1] != "퇴근시켜줘 제발") break
                 val myRow = rowIter.next() as HSSFRow
                 if (rowno != 0) {
-                    //열을 반복할 변수 만들어주기
-                    val cellIter = myRow.cellIterator()
-                    //열 넘버 변수 만들기
-                    var colno = 0
-                    //열 반복문
-                    while (cellIter.hasNext()) {
+                    val cellIter = myRow.cellIterator()  //열을 반복할 변수 만들어주기
+                    var colno = 0 //열 넘버 변수 만들기
+                    while (cellIter.hasNext()) {  //열 반복문
                         val myCell = cellIter.next() as HSSFCell
                         if (colno === 0){
                             if (myCell.toString() != value) break
@@ -179,13 +154,11 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 }
                 rowno++
             }
-
             Toast.makeText(this, answer_array[1], Toast.LENGTH_LONG).show() // 확인메시지 출력
         } catch (e: Exception) {
             Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
         }
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -271,7 +244,5 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(autocomplete_stock.windowToken, 0);
     }
-
-
 }
 
