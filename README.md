@@ -64,7 +64,7 @@ com.google.android.gms.common.api.ApiException: 10:
 10. 코틀린 while 반복문 참고 : https://hamzzibari.tistory.com/108
 
 11. Retrofi2를 이용해서 서버와 연동하기 : https://cholol.tistory.com/470
-12. https://shwjdqls.github.io/android-retrofit-usage-json/
+12. Retrofi2를 이용해서 서버와 연동하기2 : https://shwjdqls.github.io/android-retrofit-usage-json/
   
 ------
 ## 서버
