@@ -46,6 +46,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var firebaseAuth: FirebaseAuth //firebase Auth
     private lateinit var googleSignInClient: GoogleSignInClient //google client
     private lateinit var recyclerView: RecyclerView //recyclerView
+    private lateinit var stockCode: String
+
+    private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,11 +116,11 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val uid = user.uid
         }
 //        Toast.makeText(this, user?.uid.toString(), Toast.LENGTH_SHORT).show()
-//        Toast.makeText(this, "retrofit 테스트", Toast.LENGTH_SHORT).show()
-        val retrofit = Retrofit.Builder().baseUrl("https://scone-294002.uc.r.appspot.com") .addConverterFactory(
+
+        //이하 네트워크 통신 코드
+        val retrofit = Retrofit.Builder().baseUrl(BaseURL) .addConverterFactory(
             GsonConverterFactory.create()).build();
         var loginCheck = retrofit.create(LoginCheck::class.java);
-        Toast.makeText(this, "retrofit 테스트2", Toast.LENGTH_SHORT).show()
         loginCheck.checkLogin(user?.uid.toString(), user?.displayName.toString()).enqueue(object: Callback<Login> {
             var login:Login? = null
             override fun onFailure(call: Call<Login>, t: Throwable) { //실패할 경우
@@ -129,10 +132,10 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             override fun onResponse(call: Call<Login>, response: Response<Login>) { //정상응답이 올경우
                 login = response.body()
-                Log.d("LOGIN", "msg : "+login?.result)
+                Log.d("LOGIN", "msg : "+login?.ResultCode)
 //                Log.d("LOGIN","code : "+login?.code)
                 var dialog = AlertDialog.Builder(this@InfoActivity)
-                dialog.setTitle(login?.result.toString())
+                dialog.setTitle(login?.ResultCode.toString())
 //                dialog.setMessage(login?.code)
                 dialog.show()
             }
@@ -146,12 +149,14 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         //서치 버튼 - SearchResultActivity로 검색한 종목 이름을 넘긴다
         searchRequest_button.setOnClickListener {
 
+            readExcelFileFromAssets(autocomplete_stock.text.toString()) // stockCode 변수에 주식 코드 저장해주기
             val intent = Intent(this, SearchResultActivity::class.java)
-            Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
             intent.putExtra("stock_name", autocomplete_stock.text.toString())
-
+            intent.putExtra("stock_code", stockCode)
+            intent.putExtra("uid", user?.uid.toString())
             // 넘겨주기
-            readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
+//            readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
             startActivity(intent)
         }
     }
@@ -188,7 +193,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
                 }
                 rowno++
             }
-            Toast.makeText(this, answer_array[1], Toast.LENGTH_LONG).show() // 확인메시지 출력
+            stockCode =  answer_array[1].toString()
+//            Toast.makeText(this, answer_array[1], Toast.LENGTH_LONG).show() // 확인메시지 출력
         } catch (e: Exception) {
             Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
         }
