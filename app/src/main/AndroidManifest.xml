@@ -17,10 +17,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MyinfoActivity"></activity>
         <activity android:name=".SearchResultActivity" />
+
         <activity
             android:name=".CouponRegisterActivity"
-            android:label="@string/title_activity_coupon_register"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
+
         <activity android:name=".SignupActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".GoogleSignInActivity" />

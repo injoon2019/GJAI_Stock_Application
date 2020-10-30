@@ -132,12 +132,12 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             override fun onResponse(call: Call<Login>, response: Response<Login>) { //정상응답이 올경우
                 login = response.body()
-                Log.d("LOGIN", "msg : "+login?.ResultCode)
+//                Log.d("LOGIN", "msg : "+login?.ResultCode)
 //                Log.d("LOGIN","code : "+login?.code)
-                var dialog = AlertDialog.Builder(this@InfoActivity)
-                dialog.setTitle(login?.ResultCode.toString())
+//                var dialog = AlertDialog.Builder(this@InfoActivity)
+//                dialog.setTitle(login?.ResultCode.toString())
 //                dialog.setMessage(login?.code)
-                dialog.show()
+//                dialog.show()
             }
         })
 
@@ -220,7 +220,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             }
             R.id.item2 -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show() //선물함
             R.id.item3 -> {  //쿠폰 등록
-                startActivity(Intent(this, CouponRegisterActivity::class.java))
+                val intent = Intent(this, CouponRegisterActivity::class.java)
+                intent.putExtra("uid", user?.uid.toString())
+                startActivity(intent)
             }
             R.id.item2_1 -> Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
             R.id.item2_2 -> signOut() //로그아웃

@@ -24,8 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class SearchResultActivity : AppCompatActivity() {
-    private var sendMsg = "안녕하세요 ~ 보겠습    "
+    private var sendMsg = " 주식 선물을 받으셨습니다 쿠폰번호: "
+    private lateinit var couponCode:String
+    private lateinit var stockName:String
     private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +36,7 @@ class SearchResultActivity : AppCompatActivity() {
 
         stock_name.text = intent.getStringExtra("stock_name")
         var stockCode = intent.getStringExtra("stock_code")
+        stockName = intent.getStringExtra("stock_name").toString()
         val uid = intent.getStringExtra("uid")
 
         activity_search_gift_button.setOnClickListener {
@@ -59,10 +63,10 @@ class SearchResultActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Coupon>, response: Response<Coupon>) {
                     buycoupon_response = response.body()
                     Log.d("LOGIN", "msg : "+buycoupon_response?.ResultCode)
+                    couponCode = buycoupon_response?.CouponCode.toString()
 //                Log.d("LOGIN","code : "+login?.code)
 //                    var dialog = AlertDialog.Builder(this@SearchResultActivity)
 //                    dialog.setTitle(buycoupon_response?.CouponCode.toString())
-                    var coupon_code:String = buycoupon_response?.CouponCode.toString()
 //                    Toast.makeText(this, coupon_code+" 쿠폰 발급", Toast.LENGTH_SHORT).show()
 //                dialog.setMessage(login?.code)
 //                    dialog.show()
@@ -70,13 +74,10 @@ class SearchResultActivity : AppCompatActivity() {
 
             })
 
-
-
             //전화번호부 가져오기
             val intent = Intent(Intent.ACTION_PICK);
             intent.setData(Uri.parse("content://com.android.contacts/data/phones"));
             startActivityForResult(intent, 10);
-
 
         }
     }
@@ -84,7 +85,7 @@ class SearchResultActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK) {
-            sendSMS(data!!, sendMsg)
+            sendSMS(data!!, stockName+ sendMsg+couponCode)
         }
 
         super.onActivityResult(requestCode, resultCode, data)
@@ -110,7 +111,7 @@ class SearchResultActivity : AppCompatActivity() {
 
             close()
 
-            (findViewById<View>(R.id.activity_search_gift_button) as TextView).text = "name : $name number : $number"
+//            (findViewById<View>(R.id.activity_search_gift_button) as TextView).text = "name : $name number : $number"
 
             val n = Uri.parse("smsto: $number")
             val intent = Intent(Intent.ACTION_SENDTO, n)
