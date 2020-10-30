@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -31,6 +32,14 @@ import org.apache.poi.hssf.usermodel.HSSFRow
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.poifs.filesystem.POIFSFileSystem
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -104,6 +113,31 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             val uid = user.uid
         }
 //        Toast.makeText(this, user?.uid.toString(), Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "retrofit 테스트", Toast.LENGTH_SHORT).show()
+        val retrofit = Retrofit.Builder().baseUrl("https://scone-294002.uc.r.appspot.com") .addConverterFactory(
+            GsonConverterFactory.create()).build();
+        var loginCheck = retrofit.create(LoginCheck::class.java);
+        Toast.makeText(this, "retrofit 테스트2", Toast.LENGTH_SHORT).show()
+        loginCheck.checkLogin(user?.uid.toString(), user?.displayName.toString()).enqueue(object: Callback<Login> {
+            var login:Login? = null
+            override fun onFailure(call: Call<Login>, t: Throwable) { //실패할 경우
+                t.message?.let { Log.e("LOGIN", it) }
+                var dialog = AlertDialog.Builder(this@InfoActivity)
+                dialog.setTitle("에러")
+                dialog.setMessage("호출 실패")
+                dialog.show()
+            }
+            override fun onResponse(call: Call<Login>, response: Response<Login>) { //정상응답이 올경우
+                login = response.body()
+                Log.d("LOGIN", "msg : "+login?.result)
+//                Log.d("LOGIN","code : "+login?.code)
+                var dialog = AlertDialog.Builder(this@InfoActivity)
+                dialog.setTitle(login?.result.toString())
+//                dialog.setMessage(login?.code)
+                dialog.show()
+            }
+        })
+
 
         //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
         navUsername.text = user?.displayName.toString()
@@ -245,4 +279,5 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         imm.hideSoftInputFromWindow(autocomplete_stock.windowToken, 0);
     }
 }
+
 
