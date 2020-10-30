@@ -62,6 +62,9 @@ com.google.android.gms.common.api.ApiException: 10:
                                       
 9. 안드로이드 asset 폴더 추가하기  :  https://recipes4dev.tistory.com/125
 10. 코틀린 while 반복문 참고 : https://hamzzibari.tistory.com/108
+
+11. Retrofi2를 이용해서 서버와 연동하기 : https://cholol.tistory.com/470
+11_2. https://shwjdqls.github.io/android-retrofit-usage-json/
   
 ------
 ## 서버
