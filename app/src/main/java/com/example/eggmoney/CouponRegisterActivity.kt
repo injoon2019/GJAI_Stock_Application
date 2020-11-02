@@ -20,34 +20,36 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CouponRegisterActivity : AppCompatActivity() {
 
-    private lateinit var couponCode:String
-    private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
-    private var statusMessage:String = "에러가 발생하였습니다"
+    private lateinit var couponCode: String
+    private val BaseURL: String = "https://scone-294002.uc.r.appspot.com"
+    private var statusMessage: String = "에러가 발생하였습니다"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coupon_register)
         setSupportActionBar(findViewById(R.id.coupon_toolbar))
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-
+        val uid = intent.getStringExtra("uid")
 //        val toolbar = findViewById(R.id.coupon_toolbar) as Toolbar
 
-        coupon_register_button.setOnClickListener{
+        coupon_register_button.setOnClickListener {
             couponCode = editTextCouponNumber.text.toString()
-            if (couponCode.length == 15){
+
+            if (couponCode.length == 15) {
                 val uid = intent.getStringExtra("uid")
 //            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
 //            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
 
 
                 val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
-                    GsonConverterFactory.create()).build();
+                    GsonConverterFactory.create()
+                ).build();
                 var registercoupon = retrofit.create(RegisterCoupon::class.java);
 
-                registercoupon.registerCoupon(couponCode, uid).enqueue(object:
+                registercoupon.registerCoupon(couponCode, uid).enqueue(object :
                     Callback<CouponRegisterResponse> {
 
-                    var registercoupon_response:CouponRegisterResponse? = null
+                    var registercoupon_response: CouponRegisterResponse? = null
 
                     override fun onFailure(call: Call<CouponRegisterResponse>, t: Throwable) {
                         t.message?.let { Log.e("LOGIN", it) }
@@ -77,19 +79,16 @@ class CouponRegisterActivity : AppCompatActivity() {
                         }
 
                         dialog.setPositiveButton("확인", listener)
-//                    dialog.setTitle("테스트용")
-//                    Toast.makeText(this, coupon_code+" 쿠폰 발급", Toast.LENGTH_SHORT).show()
-//                dialog.setMessage(login?.code)
                         dialog.show()
+//            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
                     }
-
                 })
             }else{
                 Toast.makeText(this, "쿠폰 번호를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
 
         }
-
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
