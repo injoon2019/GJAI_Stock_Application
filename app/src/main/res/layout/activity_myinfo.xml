@@ -1,79 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_info_text_card"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="신상정보"/>
-        <RadioGroup
+        android:layout_height="200dp"
+        android:background="#EAE4FD"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/my_info_sex_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47">
 
-            android:id="@+id/radioGroup_1"
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/my_info_text_card_2"
+            android:layout_width="229dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:background="#EAE4FD"
+            android:text="사용자님을 더 알고 싶어요"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1" />
+
+        <TextView
+            android:id="@+id/my_info_text_card_1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RadioButton android:layout_weight="1"
-                android:text="남자"
-                android:id="@+id/rg_btn1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+            android:layout_height="90dp"
+            android:layout_alignParentTop="true"
+            android:background="#EAE4FD"
+            android:text="사용자님을 위한 쉽고 간단하면서도 정확한 투자유형 검사"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/my_info_skip_button"
+            android:layout_width="100dp"
+            android:layout_height="39dp"
+            android:text="skip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/my_info_text_card_2"
+            app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_info_sex_card"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#EAE4FD"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/my_info_age_card">
+
+        <TextView
+            android:id="@+id/my_info_sex_card_text_1"
+            android:layout_width="370dp"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="5dp"
+            android:background="#EAE4FD"
+            android:text="성별을 선택해 주세요"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.387"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/sex_radioGroup_1"
+            android:layout_width="378dp"
+            android:layout_height="82dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_info_sex_card_text_1">
+
             <RadioButton
+                android:id="@+id/sex_btn1"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="남자"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
+                app:layout_constraintEnd_toStartOf="@+id/rg_btn2"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_1"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
+
+            <RadioButton
+                android:id="@+id/sex_btn2"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:text="여자"
-                android:id="@+id/rg_btn2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup_1"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
         </RadioGroup>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_info_age_card"
+        android:layout_width="409dp"
+        android:layout_height="308dp"
+        android:background="#EAE4FD"
         android:orientation="vertical"
-        android:layout_weight="1">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
         <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="좋아하는 업종"
-            android:textSize="30dp"/>
-        <RadioButton
-            android:id="@+id/r_btn1"
-            android:text="IT서비스"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/r_btn2"
-            android:text="디스플레이패널"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/r_btn3"
-            android:text="전기제품"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/r_btn4"
-            android:text="소프트웨어"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-            android:id="@+id/r_btn5"
-            android:text="건설"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:id="@+id/my_info_age_card_text_1"
+            android:layout_width="370dp"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="#EAE4FD"
+            android:text="나이를 선택해 주세요"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/age_radioGroup_1"
+            android:layout_width="380dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_info_age_card_text_1">
+            binding.rg1.setOnCheckedChangeListener(listener1)
+
+            <RadioButton
+                android:id="@+id/age_btn1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="10대"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
+                app:layout_constraintEnd_toStartOf="@+id/radioGroup_1"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_1"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
+
+            <RadioButton
+                android:id="@+id/age_btn2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="20대 초반"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup_1"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
+
+            <RadioButton
+                android:id="@+id/age_btn3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="20대 후반"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
+                app:layout_constraintEnd_toStartOf="@+id/rg_btn2"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_1"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/age_radioGroup_2"
+            android:layout_width="380dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/age_radioGroup_1">
+            binding.rg2.setOnCheckedChangeListener(listener2)
+
+            <RadioButton
+                android:id="@+id/age_btn4"
+                android:layout_width="19dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="30대 초반"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_2"
+                app:layout_constraintEnd_toStartOf="@+id/radioGroup_2"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_2"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_2" />
+
+            <RadioButton
+                android:id="@+id/age_btn5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="30대 후반"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_2"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup_2"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_2" />
+
+            <RadioButton
+                android:id="@+id/age_btn6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="40대"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_2"
+                app:layout_constraintEnd_toStartOf="@+id/rg_btn2"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_2"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_2" />
+        </RadioGroup>
 
 
-</LinearLayout>
+        <RadioGroup
+            android:id="@+id/age_radioGroup_3"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/age_radioGroup_2"
+            app:layout_constraintVertical_bias="0.212">
+            binding.rg3.setOnCheckedChangeListener(listener3)
+
+            <RadioButton
+                android:id="@+id/age_btn7"
+                android:layout_width="19dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="50대"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_3"
+                app:layout_constraintEnd_toStartOf="@+id/radioGroup_3"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup_3"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_3" />
+
+            <RadioButton
+                android:id="@+id/age_btn8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="60대"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup_3"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup_3"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup_3" />
+        </RadioGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+</androidx.constraintlayout.widget.ConstraintLayout>
