@@ -22,19 +22,10 @@
         android:layout_marginStart="4dp"
         android:background="#F1DBDB"
         android:text="주식종목"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView_image"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/recyclerView_image"
-        android:layout_width="wrap_content"
-        android:layout_height="126dp"
-        android:background="#F1DBDB"
-        android:src="@drawable/stockchart_example"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="50dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
