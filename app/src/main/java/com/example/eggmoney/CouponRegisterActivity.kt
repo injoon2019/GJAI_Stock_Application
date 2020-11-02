@@ -37,15 +37,21 @@ class CouponRegisterActivity : AppCompatActivity() {
             Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
 
 
-            val retrofit = Retrofit.Builder().baseUrl(BaseURL) .addConverterFactory(
+            val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
                 GsonConverterFactory.create()).build();
             var registercoupon = retrofit.create(RegisterCoupon::class.java);
 
-            registercoupon.registerCoupon(uid, couponCode).enqueue(object:
+            registercoupon.registerCoupon(couponCode, uid).enqueue(object:
                 Callback<CouponRegisterResponse> {
+
                 var registercoupon_response:CouponRegisterResponse? = null
+
                 override fun onFailure(call: Call<CouponRegisterResponse>, t: Throwable) {
-//                    TODO("Not yet implemented")
+                    t.message?.let { Log.e("LOGIN", it) }
+                    var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
+                    dialog.setTitle("에러")
+                    dialog.setMessage("호출 실패")
+                    dialog.show()
                 }
 
                 override fun onResponse(
@@ -55,6 +61,8 @@ class CouponRegisterActivity : AppCompatActivity() {
                     registercoupon_response = response.body()
                     var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
                     dialog.setTitle(registercoupon_response?.ResultMessage.toString())
+//                    dialog.setTitle(registercoupon_response?.ResultCode.toString())
+//                    dialog.setTitle("테스트용")
 //                    Toast.makeText(this, coupon_code+" 쿠폰 발급", Toast.LENGTH_SHORT).show()
 //                dialog.setMessage(login?.code)
                     dialog.show()

@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface LoginCheck {
     @FormUrlEncoded
-    @POST("/user/check/")
+    @POST("/user/UserCheck/")
     fun checkLogin(
         @Field("uid") useruid:String,
         @Field("uname") username:String
