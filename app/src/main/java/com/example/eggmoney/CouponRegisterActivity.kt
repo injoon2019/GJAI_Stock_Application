@@ -27,26 +27,28 @@ class CouponRegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_coupon_register)
         setSupportActionBar(findViewById(R.id.coupon_toolbar))
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-
+        val uid = intent.getStringExtra("uid")
+        Toast.makeText(this, uid+"젠장?", Toast.LENGTH_SHORT).show()
 //        val toolbar = findViewById(R.id.coupon_toolbar) as Toolbar
 
         coupon_register_button.setOnClickListener{
             couponCode = editTextCouponNumber.text.toString()
-            val uid = intent.getStringExtra("uid")
-            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
-
+//            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
 
             val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
                 GsonConverterFactory.create()).build();
             var registercoupon = retrofit.create(RegisterCoupon::class.java);
 
+
+            var statusCode: String = "0"
             registercoupon.registerCoupon(couponCode, uid).enqueue(object:
                 Callback<CouponRegisterResponse> {
 
                 var registercoupon_response:CouponRegisterResponse? = null
 
                 override fun onFailure(call: Call<CouponRegisterResponse>, t: Throwable) {
+                    statusCode = "500"
                     t.message?.let { Log.e("LOGIN", it) }
                     var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
                     dialog.setTitle("에러")
@@ -59,9 +61,10 @@ class CouponRegisterActivity : AppCompatActivity() {
                     response: Response<CouponRegisterResponse>
                 ) {
                     registercoupon_response = response.body()
+                    statusCode = registercoupon_response?.ResultCode.toString()
                     var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
-                    dialog.setTitle(registercoupon_response?.ResultMessage.toString())
-//                    dialog.setTitle(registercoupon_response?.ResultCode.toString())
+//                    dialog.setTitle(registercoupon_response?.ResultMessage.toString())
+                    dialog.setTitle(registercoupon_response?.ResultCode.toString())
 //                    dialog.setTitle("테스트용")
 //                    Toast.makeText(this, coupon_code+" 쿠폰 발급", Toast.LENGTH_SHORT).show()
 //                dialog.setMessage(login?.code)
@@ -69,7 +72,13 @@ class CouponRegisterActivity : AppCompatActivity() {
                 }
 
             })
-            Toast.makeText(this, "쿠폰등록이 완료되었습니다", Toast.LENGTH_SHORT).show()
+            when(statusCode){
+                "0" -> Toast.makeText(this, "널값", Toast.LENGTH_SHORT).show()
+                "200" -> Toast.makeText(this, "쿠폰등록이 완료되었습니다", Toast.LENGTH_SHORT).show()
+                "500" -> Toast.makeText(this, "쿠폰등록에 실패하였습니다", Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(this, "알 수 없는 에러가 발생하였습니다", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 
