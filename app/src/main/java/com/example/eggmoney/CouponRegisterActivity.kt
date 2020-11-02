@@ -1,5 +1,6 @@
 package com.example.eggmoney
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,7 @@ class CouponRegisterActivity : AppCompatActivity() {
 
     private lateinit var couponCode:String
     private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
+    private var statusMessage:String = "에러가 발생하였습니다"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,46 +34,61 @@ class CouponRegisterActivity : AppCompatActivity() {
 
         coupon_register_button.setOnClickListener{
             couponCode = editTextCouponNumber.text.toString()
-            val uid = intent.getStringExtra("uid")
-            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
-            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
+            if (couponCode.length == 15){
+                val uid = intent.getStringExtra("uid")
+//            Toast.makeText(this, couponCode, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show()
 
 
-            val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
-                GsonConverterFactory.create()).build();
-            var registercoupon = retrofit.create(RegisterCoupon::class.java);
+                val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
+                    GsonConverterFactory.create()).build();
+                var registercoupon = retrofit.create(RegisterCoupon::class.java);
 
-            registercoupon.registerCoupon(couponCode, uid).enqueue(object:
-                Callback<CouponRegisterResponse> {
+                registercoupon.registerCoupon(couponCode, uid).enqueue(object:
+                    Callback<CouponRegisterResponse> {
 
-                var registercoupon_response:CouponRegisterResponse? = null
+                    var registercoupon_response:CouponRegisterResponse? = null
 
-                override fun onFailure(call: Call<CouponRegisterResponse>, t: Throwable) {
-                    t.message?.let { Log.e("LOGIN", it) }
-                    var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
-                    dialog.setTitle("에러")
-                    dialog.setMessage("호출 실패")
-                    dialog.show()
-                }
+                    override fun onFailure(call: Call<CouponRegisterResponse>, t: Throwable) {
+                        t.message?.let { Log.e("LOGIN", it) }
+                        var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
+                        dialog.setTitle("에러")
+                        dialog.setMessage("호출 실패")
+                        dialog.show()
+                    }
 
-                override fun onResponse(
-                    call: Call<CouponRegisterResponse>,
-                    response: Response<CouponRegisterResponse>
-                ) {
-                    registercoupon_response = response.body()
-                    var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
-                    dialog.setTitle(registercoupon_response?.ResultMessage.toString())
-//                    dialog.setTitle(registercoupon_response?.ResultCode.toString())
+                    override fun onResponse(
+                        call: Call<CouponRegisterResponse>,
+                        response: Response<CouponRegisterResponse>
+                    ) {
+                        registercoupon_response = response.body()
+                        statusMessage = registercoupon_response?.ResultMessage.toString()
+                        var dialog = AlertDialog.Builder(this@CouponRegisterActivity)
+//                    dialog.setTitle(registercoupon_response?.ResultMessage.toString())
+                        dialog.setTitle("쿠폰 등록 결과")
+                        dialog.setMessage(statusMessage)
+                        // 버튼 클릭시에 무슨 작업을 할 것인가!
+
+                        var listener = object : DialogInterface.OnClickListener {
+                            override fun onClick(p0: DialogInterface?, p1: Int) {
+                                when (p1) {
+                                }
+                            }
+                        }
+
+                        dialog.setPositiveButton("확인", listener)
 //                    dialog.setTitle("테스트용")
 //                    Toast.makeText(this, coupon_code+" 쿠폰 발급", Toast.LENGTH_SHORT).show()
 //                dialog.setMessage(login?.code)
-                    dialog.show()
-                }
+                        dialog.show()
+                    }
 
-            })
-            Toast.makeText(this, "쿠폰등록이 완료되었습니다", Toast.LENGTH_SHORT).show()
+                })
+            }else{
+                Toast.makeText(this, "쿠폰 번호를 확인해주세요", Toast.LENGTH_SHORT).show()
+            }
+
         }
-
 
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
