@@ -69,6 +69,8 @@ com.google.android.gms.common.api.ApiException: 10:
 13. 모서리 둥글게 : https://siadaddy-cordinglife.tistory.com/18
 
 14. 파이어베이스 백그라운드 푸시 알림: https://beomseok95.tistory.com/118
+
+15. 그림자 효과: https://selfish-developer.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B7%B8%EB%A6%BC%EC%9E%90Shadow-%ED%9A%A8%EA%B3%BC-%EB%84%A3%EA%B8%B0
 ------
 ## 서버
 
