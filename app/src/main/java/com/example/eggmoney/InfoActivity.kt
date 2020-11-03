@@ -28,6 +28,8 @@ import java.io.InputStream
 import java.lang.Exception
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.info_main_layout.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
@@ -96,6 +98,8 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         firebaseAuth = FirebaseAuth.getInstance() //firebase auth 객체
+
+        registerPushToken() //firebase 토큰 생성
 
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
@@ -312,6 +316,20 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(autocomplete_stock.windowToken, 0);
+    }
+
+    private fun registerPushToken() {
+        //v17.0.0 이전까지는
+        ////var pushToken = FirebaseInstanceId.getInstance().token
+        //v17.0.1 이후부터는 onTokenRefresh()-depriciated
+        var pushToken: String? = null
+        var uid = FirebaseAuth.getInstance().currentUser!!.uid
+        var map = mutableMapOf<String, Any>()
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult ->
+            pushToken = instanceIdResult.token
+            map["pushtoken"] = pushToken!!
+            FirebaseFirestore.getInstance().collection("pushtokens").document(uid!!).set(map)
+        }
     }
 }
 
