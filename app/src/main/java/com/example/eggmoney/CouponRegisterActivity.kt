@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class CouponRegisterActivity : AppCompatActivity() {
 
     private lateinit var couponCode: String
-    private val BaseURL: String = "https://scone-294002.uc.r.appspot.com"
+    private val BaseURL: String = "https://scone-294502.du.r.appspot.com"
     private var statusMessage: String = "에러가 발생하였습니다"
 
     override fun onCreate(savedInstanceState: Bundle?) {
