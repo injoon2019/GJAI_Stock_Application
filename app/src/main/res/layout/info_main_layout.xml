@@ -57,27 +57,34 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/xml_info_rv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#F6F5F8"
-            android:clipToPadding="false"
-            android:orientation="vertical"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="408dp"
+            android:layout_height="521dp"
+            android:id="@+id/srl_main"
+            app:layout_constraintTop_toBottomOf="@+id/main_info_card">
 
-            android:paddingBottom="10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_info_card"
-            tools:listitem="@layout/item_recyclerview" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/xml_info_rv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#F6F5F8"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+
+                android:paddingBottom="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_info_card"
+                tools:listitem="@layout/item_recyclerview" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.appcompat.widget.LinearLayoutCompat>

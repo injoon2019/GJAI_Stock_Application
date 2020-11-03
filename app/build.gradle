@@ -76,6 +76,6 @@ dependencies {
 
     implementation 'org.apache.poi:poi:3.9'
 
-
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
 }
