@@ -21,44 +21,39 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_info_card"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="88dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:background="#F6F5F8"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/thema_rectangle"
+            >
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="34dp"
+                android:layout_height="35dp"
+                android:src="@drawable/present_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/main_info_card_text1"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="185dp"
+                android:layout_height="30dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:background="#EBE9ED"
-                android:text="오늘의 스콘 정보"
-                android:textSize="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1" />
+                android:layout_marginStart="10dp"
+                android:text="알림"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/main_info_card_text2"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:background="#EBE9ED"
-                android:text="저좀 그만 괴롭히세요..."
-                android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_info_card_text1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
