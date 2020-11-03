@@ -1,3 +1,6 @@
 package com.example.eggmoney
 
-class Info (val title: String, val ctent: String) {}
+import android.media.Image
+
+
+class Info (val main_title: String, val main_content: String, val main_image: String) {}

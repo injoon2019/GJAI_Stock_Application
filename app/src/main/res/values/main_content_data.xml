@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "main_content_data">
+        <item>야심차게 준비한  이것 도대체 무엇이길래 사람들이 주목할까?</item>
+        <item>클라우드 게임 본격화! 나에게 맞는 게임은?</item>
+        <item>사상 최대 10조원 빅딜 인텔 낸드플래시 인수</item>
+        <item>삼성 이건희 회장 별세</item>
+        <item>카카오 스콘과 인수 합병</item>
+    </string-array>
+</resources>

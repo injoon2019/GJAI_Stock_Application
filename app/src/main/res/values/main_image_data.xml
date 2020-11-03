@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "main_image_data">
+        <item>@drawable/lg_content</item>
+        <item>@drawable/netmarble_icon</item>
+        <item>@drawable/skhynix_content</item>
+        <item>@drawable/samsunt_electronics_content</item>
+        <item>@drawable/kakao_content</item>
+    </string-array>
+</resources>
