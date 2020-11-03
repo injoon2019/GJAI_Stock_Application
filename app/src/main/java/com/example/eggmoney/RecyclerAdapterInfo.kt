@@ -33,8 +33,8 @@ class RecyclerAdapterInfo(private val items: ArrayList<Info>) :
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
         fun bind(listener: View.OnClickListener, item: Info) {
-            view.infoTitle.text = item.title
-            view.infoContent.text = item.ctent
+            view.info_Title.text = item.title
+            view.info_Content.text = item.ctent
             view.setOnClickListener(listener)
         }
     }

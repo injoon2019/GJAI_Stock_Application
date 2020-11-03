@@ -17,7 +17,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D6CDD8">
+        android:background="#F6F5F8">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.3dp"
+            android:background="#00060B"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_info_card"
@@ -27,7 +34,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="20"
-            android:background="@drawable/thema_rectangle"
+            android:background="@drawable/notification_thema_rectangle"
             android:orientation="vertical"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +94,14 @@
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:layout_width="408dp"
-            android:layout_height="521dp"
             android:id="@+id/srl_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:background="#F6F5F8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/main_info_card">
 
             <androidx.recyclerview.widget.RecyclerView
