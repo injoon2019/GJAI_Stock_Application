@@ -146,6 +146,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
 
+        //자동완성 클릭했을때
+//        autocomplete_stock.setOnItemClickListener { parent, view, position, id ->  }
+
         //서치 버튼 - SearchResultActivity로 검색한 종목 이름을 넘긴다
         searchRequest_button.setOnClickListener {
 
