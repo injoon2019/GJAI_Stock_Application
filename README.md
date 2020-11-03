@@ -65,6 +65,8 @@ com.google.android.gms.common.api.ApiException: 10:
 
 11. Retrofi2를 이용해서 서버와 연동하기 : https://cholol.tistory.com/470
 12. Retrofi2를 이용해서 서버와 연동하기2 : https://shwjdqls.github.io/android-retrofit-usage-json/
+
+13. 모서리 둥글게 : https://siadaddy-cordinglife.tistory.com/18
   
 ------
 ## 서버
