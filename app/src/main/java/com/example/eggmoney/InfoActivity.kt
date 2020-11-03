@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -27,6 +28,7 @@ import java.io.InputStream
 import java.lang.Exception
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.info_main_layout.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
 
@@ -50,20 +52,23 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
     private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        recyclerView = findViewById(R.id.recyclerView) // recyclerView 부분
-        recyclerView.adapter = MainRecyclerViewAdapter()
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-        //recyclerView.addItemDecoration(DivideDecoration(this)) // 밑줄 추가하기
-
         val suggestion = resources.getStringArray(R.array.stock_list)// 자동완성 검색기능 부분
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
+        var search_adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 1
-        autocomplete_stock.setAdapter(adapter)
+        autocomplete_stock.setAdapter(search_adapter)
+
+        val list = ArrayList<Info>()    // 리사이클러뷰 부분
+        list.add(Info("Sarah","010-xxxx-xxxx"))
+        list.add(Info("Rio","010-xxxx-xxxx"))
+        val adapter = RecyclerAdapterInfo(list)
+        xml_info_rv.adapter = adapter
+        xml_info_rv.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 드로어를 꺼낼 홈 버튼 활성화
@@ -256,34 +261,35 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         finish()
     }
 
-    private class MainRecyclerViewAdapter :
-        RecyclerView.Adapter<MainRecyclerViewViewHolder>() { //RecyclerView 부분
-        override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
-        ): MainRecyclerViewViewHolder {
-            val itemView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_recyclerview, parent, false)
-            return MainRecyclerViewViewHolder(itemView)
-        }
+//    private class MainRecyclerViewAdapter :
+//        RecyclerView.Adapter<MainRecyclerViewViewHolder>() { //RecyclerView 부분
+//        override fun onCreateViewHolder(
+//            parent: ViewGroup,
+//            viewType: Int
+//        ): MainRecyclerViewViewHolder {
+//            val itemView = LayoutInflater.from(parent.context)
+//                .inflate(R.layout.item_recyclerview, parent, false)
+//            return MainRecyclerViewViewHolder(itemView)
+//        }
+//
+//        override fun onBindViewHolder(holder: MainRecyclerViewViewHolder, position: Int) {
+//            holder.setTitle((position + 1).toString() + "번째 아이템입니다.")
+//        }
+//
+//        override fun getItemCount(): Int {
+//            return 10
+//        }
+//    }
 
-        override fun onBindViewHolder(holder: MainRecyclerViewViewHolder, position: Int) {
-            holder.setTitle((position + 1).toString() + "번째 아이템입니다.")
-        }
+//    private class MainRecyclerViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//
+//        private val title: TextView = itemView.findViewById(R.id.title)
+//
+//        fun setTitle(title: String) {
+//            this.title.text = title
+//        }
+//    }
 
-        override fun getItemCount(): Int {
-            return 10
-        }
-    }
-
-    private class MainRecyclerViewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val title: TextView = itemView.findViewById(R.id.title)
-
-        fun setTitle(title: String) {
-            this.title.text = title
-        }
-    }
 
     private fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
