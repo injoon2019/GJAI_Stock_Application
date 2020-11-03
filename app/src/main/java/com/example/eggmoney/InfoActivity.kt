@@ -64,8 +64,11 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         autocomplete_stock.setAdapter(search_adapter)
 
         val list = ArrayList<Info>()    // 리사이클러뷰 부분
-        list.add(Info("Sarah","010-xxxx-xxxx"))
-        list.add(Info("Rio","010-xxxx-xxxx"))
+        list.add(Info("인준","010-xxxx-xxxx"))
+        list.add(Info("병표","010-xxxx-xxxx"))
+        list.add(Info("현우","010-xxxx-xxxx"))
+        list.add(Info("원우","010-xxxx-xxxx"))
+        list.add(Info("민기","010-xxxx-xxxx"))
         val adapter = RecyclerAdapterInfo(list)
         xml_info_rv.adapter = adapter
         xml_info_rv.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
@@ -151,6 +154,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUsername.text = user?.displayName.toString()
         navUserEmail.text = user?.email.toString()
 
+        //자동완성 클릭했을때
+//        autocomplete_stock.setOnItemClickListener { parent, view, position, id ->  }
+
         //서치 버튼 - SearchResultActivity로 검색한 종목 이름을 넘긴다
         searchRequest_button.setOnClickListener {
 
@@ -163,6 +169,23 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             // 넘겨주기
 //            readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
             startActivity(intent)
+        }
+
+        //SwipeRefresh 구현 부분
+        srl_main.setOnRefreshListener {
+            // 사용자가 아래로 드래그 했다가 놓았을 때 호출 됩니다.
+            // 이때 새로고침 화살표가 계속 돌아갑니다.
+            // 서버통신~~
+            val list = ArrayList<Info>()    // 리사이클러뷰 부분
+            list.add(Info("아이유","010-xxxx-xxxx"))
+            list.add(Info("슬기","010-xxxx-xxxx"))
+            list.add(Info("멋사","010-xxxx-xxxx"))
+            list.add(Info("두희","010-xxxx-xxxx"))
+            list.add(Info("지숙","010-xxxx-xxxx"))
+            val adapter = RecyclerAdapterInfo(list)
+            xml_info_rv.adapter = adapter
+            xml_info_rv.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+            srl_main.isRefreshing = false //서버 통신 완료 후 호출해줍니다.
         }
     }
 
