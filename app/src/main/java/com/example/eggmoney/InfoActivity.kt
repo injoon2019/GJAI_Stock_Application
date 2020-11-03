@@ -50,7 +50,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private lateinit var recyclerView: RecyclerView //recyclerView
     private lateinit var stockCode: String
 
-    private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
+    private val BaseURL:String = "https://scone-294502.du.r.appspot.com"
 
 
 

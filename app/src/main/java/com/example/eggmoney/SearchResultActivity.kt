@@ -27,7 +27,7 @@ class SearchResultActivity : AppCompatActivity() {
     private var sendMsg = " 주식 선물을 받으셨습니다 쿠폰번호: "
     private lateinit var couponCode:String
     private lateinit var stockName:String
-    private val BaseURL:String = "https://scone-294002.uc.r.appspot.com"
+    private val BaseURL:String = "https://scone-294502.du.r.appspot.com"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
