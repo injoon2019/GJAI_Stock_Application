@@ -5,51 +5,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:layout_marginBottom="8dp"
     android:layout_marginTop="8dp"
     android:background="@drawable/thema_rectangle"
-    >
+    android:layout_margin="10dp"
+    android:elevation="10dp"
 
+    >
 
     <TextView
         android:id="@+id/info_Title"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
         android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/info_Content"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/info_Content"
-        android:layout_width="388dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/info_imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_Title"
         tools:text="Content" />
 
     <ImageView
-        android:id="@+id/info_imageView"
+        android:id="@+id/info_ImageView"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="0dp"
 
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/present_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_Content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

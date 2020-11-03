@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "main_title_data">
+        <item>LG전자</item>
+        <item>넷마블</item>
+        <item>SK하이닉스</item>
+        <item>삼성전자</item>
+        <item>카카오</item>
+    </string-array>
+</resources>

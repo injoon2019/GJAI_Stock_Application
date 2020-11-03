@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name = "stock_list">
-        <item>Name</item>
         <item>3S</item>
         <item>AJ네트웍스</item>
         <item>AK홀딩스</item>
