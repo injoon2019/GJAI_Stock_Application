@@ -71,7 +71,6 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         list.add(Info("민기","010-xxxx-xxxx"))
         val adapter = RecyclerAdapterInfo(list)
         xml_info_rv.adapter = adapter
-        xml_info_rv.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 드로어를 꺼낼 홈 버튼 활성화
@@ -184,7 +183,6 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             list.add(Info("지숙","010-xxxx-xxxx"))
             val adapter = RecyclerAdapterInfo(list)
             xml_info_rv.adapter = adapter
-            xml_info_rv.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
             srl_main.isRefreshing = false //서버 통신 완료 후 호출해줍니다.
         }
     }
