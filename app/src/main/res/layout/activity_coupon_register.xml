@@ -18,15 +18,15 @@
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTextCouponNumber"
-        app:layout_constraintStart_toEndOf="@+id/google_sign_imageview"
+        app:layout_constraintStart_toEndOf="@+id/coupon_register_back_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55" />
 
     <ImageView
-        android:id="@+id/google_sign_imageview"
+        android:id="@+id/coupon_register_back_button"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextCouponNumber"
