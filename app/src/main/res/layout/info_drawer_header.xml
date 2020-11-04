@@ -8,7 +8,7 @@
     android:layout_height="220dp"
     android:padding="20dp"
     android:orientation="vertical"
-    android:background="#FFF2E6">
+    android:background="#2980B9">
 
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="8dp"
         android:text="김멋사"
-        android:textColor="#000000"
+        android:textColor="#FBFAFA"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/user_email"
@@ -43,7 +43,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="16dp"
         android:text="010-1234-5678"
-        android:textColor="#EB554C4C"
+        android:textColor="#FBFAFA"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

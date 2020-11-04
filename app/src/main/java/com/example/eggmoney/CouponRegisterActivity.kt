@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.content_coupon_register.*
+import kotlinx.android.synthetic.main.activity_coupon_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +27,8 @@ class CouponRegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coupon_register)
-        setSupportActionBar(findViewById(R.id.coupon_toolbar))
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(findViewById(R.id.coupon_toolbar))
+//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         val uid = intent.getStringExtra("uid")
 //        val toolbar = findViewById(R.id.coupon_toolbar) as Toolbar
 
@@ -90,10 +90,6 @@ class CouponRegisterActivity : AppCompatActivity() {
 
         }
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
