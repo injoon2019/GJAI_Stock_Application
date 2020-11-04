@@ -17,15 +17,15 @@
         android:textColor="#000000"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextCouponNumber"
-        app:layout_constraintStart_toEndOf="@+id/google_sign_imageview"
+        app:layout_constraintStart_toEndOf="@+id/coupon_register_back_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.55" />
 
     <ImageView
-        android:id="@+id/google_sign_imageview"
+        android:id="@+id/coupon_register_back_button"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextCouponNumber"
@@ -45,7 +45,7 @@
         android:gravity="center"
         android:hint="등록할 쿠폰 번호를 입력해 주세요 (15자)"
         android:inputType="textPersonName"
-        android:textSize="20dp"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
     <TextView
         android:id="@+id/coupon_register_button"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"

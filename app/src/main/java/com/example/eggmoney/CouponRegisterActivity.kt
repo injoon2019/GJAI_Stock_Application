@@ -90,6 +90,12 @@ class CouponRegisterActivity : AppCompatActivity() {
 
         }
 
+        coupon_register_back_button.setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
+        }
+
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
