@@ -60,6 +60,7 @@
                 android:layout_weight="3"
                 android:text="알림"
                 android:textSize="25dp"
+                android:textColor="#FBFAFA"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -71,6 +72,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_weight="4"
                 android:text="오전 11:50"
+                android:textColor="#FBFAFA"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -78,6 +80,7 @@
             <TextView
                 android:id="@+id/main_info_card_text_main"
                 android:layout_width="0dp"
+                android:textColor="#FBFAFA"
                 android:layout_height="27dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
