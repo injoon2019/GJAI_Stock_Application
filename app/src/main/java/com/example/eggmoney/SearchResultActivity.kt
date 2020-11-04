@@ -39,6 +39,10 @@ class SearchResultActivity : AppCompatActivity() {
         stockName = intent.getStringExtra("stock_name").toString()
         val uid = intent.getStringExtra("uid")
 
+        search_result_back_button.setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
+        }
+
         activity_search_gift_button.setOnClickListener {
             // TODO: 서버에게 stock_name 혹은 종목코드로 선물 요청 보내기
             // TODO: 전화번호부 가져오
