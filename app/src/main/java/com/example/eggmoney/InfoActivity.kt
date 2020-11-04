@@ -252,7 +252,9 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             R.id.account -> {  // 내정보
                 startActivity(Intent(this, MyinfoActivity::class.java))
             }
-            R.id.item2 -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show() //선물함
+            R.id.item2 -> { // 선물함
+                startActivity(Intent(this, PresentActivity::class.java))
+            }
             R.id.item3 -> {  //쿠폰 등록
                 val intent = Intent(this, CouponRegisterActivity::class.java)
                 intent.putExtra("uid", user?.uid.toString())

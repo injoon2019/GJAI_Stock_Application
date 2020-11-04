@@ -15,14 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyinfoActivity"></activity>
+        <activity android:name=".PresentActivity"></activity>
+        <activity android:name=".MyinfoActivity" />
         <activity android:name=".SearchResultActivity" />
-
         <activity
             android:name=".CouponRegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true"/>
-
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".GoogleSignInActivity" />
@@ -39,25 +38,23 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".SigninActivity" />
-
-        <!--- 안드로이드 8.0 이상 푸시 처리 추가 코드-->
+        <activity android:name=".SigninActivity" /> <!-- - 안드로이드 8.0 이상 푸시 처리 추가 코드 -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/scone_logo1"/>
+            android:resource="@drawable/scone_logo1" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent"/>
+            android:resource="@color/colorAccent" />
 
         <service
-            android:name = ".MyFirebaseMessagingService"
-            android:enabled="true" android:exported="true"
+            android:name=".MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true"
             android:stopWithTask="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
 
 </manifest>
