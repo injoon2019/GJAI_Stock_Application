@@ -75,6 +75,8 @@ com.google.android.gms.common.api.ApiException: 10:
 16. 상태바 색 변경방법 : https://xopenpro.tistory.com/21
 
 17. 폰트 추가하기: https://hello-bryan.tistory.com/82
+
+18. 폰트 일괄 적용: https://pyxispub.uzuki.live/?p=245
 ------
 ## 서버
 
