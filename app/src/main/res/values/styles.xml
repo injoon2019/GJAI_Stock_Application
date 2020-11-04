@@ -5,6 +5,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/nanumsquareroundrButtonStyle</item>
+        <item name="android:editTextStyle">@style/nanumsquareroundrEditTextStyle</item>
+        <item name="android:radioButtonStyle">@style/nanumsquareroundrRadioButtonStyle</item>
+        <item name="android:checkboxStyle">@style/nanumsquareroundrCheckboxStyle</item>
+        <item name="android:textViewStyle">@style/nanumsquareroundrTextViewStyle</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
@@ -18,4 +23,20 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="nanumsquareroundrTextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/nanumsquareroundr</item>
+    </style>
+    <style name="nanumsquareroundrButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:fontFamily">@font/nanumsquareroundr</item>
+    </style>
+    <style name="nanumsquareroundrEditTextStyle" parent="@android:style/Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/nanumsquareroundr</item>
+    </style>
+    <style name="nanumsquareroundrRadioButtonStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/nanumsquareroundr</item>
+    </style>
+    <style name="nanumsquareroundrCheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/nanumsquareroundr</item>
+    </style>
 </resources>
