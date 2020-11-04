@@ -4,67 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/present_back_button"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/carrot_left" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/my_info_text_card"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#EAE4FD"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/my_info_sex_card"
+    <TextView
+        android:id="@+id/present_text_1"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="내 정보"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47">
+        app:layout_constraintVertical_bias="0.6" />
 
-        <TextView
-            android:id="@+id/my_info_text_card_2"
-            android:layout_width="229dp"
-            android:layout_height="39dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="8dp"
-            android:background="#EAE4FD"
-            android:text="사용자님을 더 알고 싶어요"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1" />
-
-        <TextView
-            android:id="@+id/my_info_text_card_1"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_alignParentTop="true"
-            android:background="#EAE4FD"
-            android:text="사용자님을 위한 쉽고 간단하면서도 정확한 투자유형 검사"
-            android:textSize="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/my_info_skip_button"
-            android:layout_width="100dp"
-            android:layout_height="39dp"
-            android:text="skip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/my_info_text_card_2"
-            app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="#00060B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/present_back_button" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_info_sex_card"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_width="357dp"
+        android:layout_height="165dp"
         android:background="#EAE4FD"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/my_info_age_card">
+        tools:layout_editor_absoluteY="195dp">
 
         <TextView
             android:id="@+id/my_info_sex_card_text_1"
@@ -113,21 +104,65 @@
                 app:layout_constraintBottom_toBottomOf="@+id/radioGroup_1"
                 app:layout_constraintEnd_toEndOf="@+id/radioGroup_1"
                 app:layout_constraintTop_toTopOf="@+id/radioGroup_1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/my_info_text_card"
+                android:layout_width="321dp"
+                android:layout_height="160dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/my_info_text_card_2"
+                    android:layout_width="229dp"
+                    android:layout_height="39dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="8dp"
+                    android:background="#EAE4FD"
+                    android:text="사용자님을 더 알고 싶어요"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1" />
+
+                <TextView
+                    android:id="@+id/my_info_text_card_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_alignParentTop="true"
+                    android:background="#EAE4FD"
+                    android:text="사용자님을 위한 쉽고 간단하면서도 정확한 투자유형 검사"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/my_info_skip_button"
+                    android:layout_width="100dp"
+                    android:layout_height="39dp"
+                    android:text="skip"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/my_info_text_card_2"
+                    app:layout_constraintTop_toBottomOf="@+id/my_info_text_card_1"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_info_age_card"
-        android:layout_width="409dp"
-        android:layout_height="308dp"
+        android:layout_width="350dp"
+        android:layout_height="244dp"
         android:background="#EAE4FD"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        tools:layout_editor_absoluteY="398dp">
 
         <TextView
             android:id="@+id/my_info_age_card_text_1"
