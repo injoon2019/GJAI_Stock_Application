@@ -327,7 +327,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         ////var pushToken = FirebaseInstanceId.getInstance().token
         //v17.0.1 이후부터는 onTokenRefresh()-depriciated
         var pushToken: String? = null
-        var uid = FirebaseAuth.getInstance().currentUser!!.uida
+        var uid = FirebaseAuth.getInstance().currentUser!!.uid
         var map = mutableMapOf<String, Any>()
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult ->
             pushToken = instanceIdResult.token
