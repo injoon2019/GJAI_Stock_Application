@@ -36,10 +36,10 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
 //        Toast.makeText(this, "회원가입 화면으로 이동합니다", Toast.LENGTH_SHORT).show()
 
         //회원가입 버튼
-        signup_button.setOnClickListener { startActivity(Intent(this, SignupActivity::class.java)) }
+//        signup_button.setOnClickListener { startActivity(Intent(this, SignupActivity::class.java)) }
 
         //btn_googleSignIn.setOnClickListener (this) // 구글 로그인 버튼
-        btn_googleSignIn.setOnClickListener { signIn() }
+        btn_google_login.setOnClickListener { signIn() }
 
 
 

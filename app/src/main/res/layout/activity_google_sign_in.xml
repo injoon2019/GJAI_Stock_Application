@@ -1,82 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SigninActivity"
-    >
-    <LinearLayout
-        android:layout_marginTop="200dp"
+    android:background="#2980B9"
+    android:layout_weight="10">
+
+
+    <ImageView
+        android:id="@+id/google_sign_imageview"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_weight="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
-        <EditText
-            android:hint="Email"
-            android:id="@+id/signin_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:inputType="text" />
-        <EditText
-            android:hint="Password"
-            android:id="@+id/signup_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="textPassword"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/google_sign_textview"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_weight="1"
+        android:text="나름의 투자방식"
+        android:textColor="#FBFAFA"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google_sign_imageview" />
 
-    <LinearLayout
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_google_login"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="140dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/google_sign_textview">
+    </com.google.android.gms.common.SignInButton>
+
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/btn_kakao_login"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="로그인"
-            android:layout_weight="1"/>
-        <Button
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical">
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btn_googleSignIn"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-
-
-            app:layout_constraintBottom_toTopOf="@+id/loginButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"></com.google.android.gms.common.SignInButton>
-
-        <com.kakao.usermgmt.LoginButton
-            android:id="@+id/loginButton"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></com.kakao.usermgmt.LoginButton>
-    </LinearLayout>
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_google_login">
+    </com.kakao.usermgmt.LoginButton>
+</androidx.constraintlayout.widget.ConstraintLayout>
