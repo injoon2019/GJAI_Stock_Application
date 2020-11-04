@@ -11,7 +11,7 @@
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/present_text_1"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="선물함"
@@ -101,7 +101,7 @@
             android:id="@+id/account_info_text_2"
             android:layout_width="0dp"
             android:layout_height="27dp"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="17dp"
             android:gravity="center"
             android:text="4,500,000 원"
             android:textColor="#FFFFFF"
@@ -111,17 +111,198 @@
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:background="#00060B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/qweq"
-        android:layout_width="407dp"
-        android:layout_height="305dp"
-        android:background="@color/colorAccent"
-        tools:layout_editor_absoluteX="4dp"
-        tools:layout_editor_absoluteY="323dp">
+        android:id="@+id/present_box"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_2"
+        app:layout_constraintVertical_bias="1.0">
 
+        <TextView
+            android:id="@+id/receive_present_box"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/notification_thema_rectangle"
+            android:gravity="center"
+            android:text="받은 선물함"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/sent_present_box"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/sent_present_box"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/gray_thema_rectangle"
+            android:gravity="center"
+            android:text="보낸 선물함"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/person_present_box_1"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/gray_thema_rectangle"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/person1_profile_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+            <TextView
+                android:id="@+id/person1_present_text_1"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="인준님이 선물한"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/person1_profile_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/person1_present_text_2"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:text="카카오"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/person_present_box_1"
+                app:layout_constraintStart_toEndOf="@+id/person1_profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/person1_present_text_1" />
+
+            <TextView
+                android:id="@+id/person1_present_text_3"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="20-11-05"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/person_present_box_2"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+
+            android:background="@drawable/gray_thema_rectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/person_present_box_1">
+
+            <ImageView
+                android:id="@+id/person2_profile_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+
+            <TextView
+                android:id="@+id/person2_present_text_1"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:text="병표님이 선물한"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintStart_toEndOf="@+id/person2_profile_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/person2_present_text_2"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:text="LG전자"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/person_present_box_2"
+                app:layout_constraintStart_toEndOf="@+id/person2_profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/person2_present_text_1" />
+
+            <TextView
+                android:id="@+id/person2_present_text_3"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:text="20-11-05"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
