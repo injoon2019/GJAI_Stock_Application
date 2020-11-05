@@ -1,30 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notification_layouy"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/thema_rectangle"
-    android:elevation="20dp"
-    android:gravity="center_vertical">
+    android:layout_height = "match_parent"
+    android:orientation="vertical"
+    android:focusable = "true"
+    android:focusableInTouchMode = "true">
 
-    <TextView
-        android:id="@+id/notification_name"
-        android:text="인준님이"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_weight="2"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/notification_text"
-        android:text=" 삼성전자 주식을 받았습니다"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_weight="5"/>
+        <TextView
+            android:id="@+id/notification_text1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="선물 알림"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/notification_date"
-        android:text="2020/11/05"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_weight="3"/>
-</LinearLayout>
+        <ImageView
+            android:id="@+id/notification_image1"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+
+        <View
+            android:id="@+id/notification_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:background="#00060B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notification_text1" />
+
+<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--            android:id="@+id/present_notification_main_Swipe"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:background="#FFFFFF"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/notification_line">-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/present_notification_main_Recycle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#FFFFFF"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notification_line"
+                tools:listitem="@layout/present_notification_recyclerview" />
+<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

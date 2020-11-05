@@ -81,6 +81,10 @@ com.google.android.gms.common.api.ApiException: 10:
 19. Autocomplete 아이템 클릭했을 때 이벤트 발생시키기: https://painone7.tistory.com/entry/AutoCompleteTextView-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%ED%81%B4%EB%A6%AD-%EC%9D%B4%EB%B2%A4%ED%8A%B8
 
 20. Autocomplete 아이템 클릭했을 때 이벤트 발생시키기2: https://painone7.tistory.com/entry/AutoCompleteTextView-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%ED%81%B4%EB%A6%AD-%EC%9D%B4%EB%B2%A4%ED%8A%B8
+
+21. 앱 이름 변경: https://happy81.tistory.com/18
+
+22. 프로젝트 및 패키지명 변경 : https://dotworks.tistory.com/4
 ------
 ## 서버
 

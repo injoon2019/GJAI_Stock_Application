@@ -1,5 +1,6 @@
 package com.eggmoney.scone
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ class NotifucationCustomAdapter: RecyclerView.Adapter<Holder>(){
     var listData = mutableListOf<notificationItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_item_recycler, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.present_notification_recyclerview, parent, false)
         return Holder(view)
     }
 
@@ -26,11 +27,11 @@ class NotifucationCustomAdapter: RecyclerView.Adapter<Holder>(){
 
 class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
     fun setNotification(notification: notificationItem){
-        itemView.notification_name.text = "${notification.name}"
-        itemView.notification_text.text = notification.text
-
-        var sdf = SimpleDateFormat("yyyy/MM/dd")
-        var formattedDate = sdf.format(notification.timestamp)
-        itemView.notification_date.text = formattedDate
+//        itemView.notification_name.text = "${notification.name}"
+//        itemView.notification_text.text = notification.text
+//
+//        var sdf = SimpleDateFormat("yyyy/MM/dd")
+//        var formattedDate = sdf.format(notification.timestamp)
+//        itemView.notification_date.text = formattedDate
     }
 }
