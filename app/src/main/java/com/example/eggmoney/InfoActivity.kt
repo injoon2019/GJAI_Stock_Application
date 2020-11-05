@@ -1,8 +1,8 @@
 package com.example.eggmoney
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -19,18 +20,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_info.*
-import kotlinx.android.synthetic.main.info_toolbar.*
-import java.io.InputStream
-import java.lang.Exception
-
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
-
+import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.info_main_layout.*
+import kotlinx.android.synthetic.main.info_toolbar.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.poifs.filesystem.POIFSFileSystem
 import retrofit2.Call
@@ -38,7 +34,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Random
+import java.io.InputStream
 
 
 class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
@@ -52,6 +48,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     private var news_list:Int = 0
 
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -160,7 +157,19 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         navUserEmail.text = user?.email.toString()
 
         //자동완성 클릭했을때
-//        autocomplete_stock.setOnItemClickListener { parent, view, position, id ->  }
+        autocomplete_stock.setOnItemClickListener { parent, view, position, id ->
+            val item = parent.getItemAtPosition(position).toString()
+
+            readExcelFileFromAssets(item) // stockCode 변수에 주식 코드 저장해주기
+            val intent = Intent(this, SearchResultActivity::class.java)
+//            Toast.makeText(this, "테스트", Toast.LENGTH_SHORT).show()
+            intent.putExtra("stock_name", autocomplete_stock.text.toString())
+            intent.putExtra("stock_code", stockCode)
+            intent.putExtra("uid", user?.uid.toString())
+            // 넘겨주기
+//            readExcelFileFromAssets(autocomplete_stock.text.toString()) // csv 파일 이용해 종목 코드 넘겨주기
+            startActivity(intent)
+        }
 
         //서치 버튼 - SearchResultActivity로 검색한 종목 이름을 넘긴다
         searchRequest_button.setOnClickListener {
