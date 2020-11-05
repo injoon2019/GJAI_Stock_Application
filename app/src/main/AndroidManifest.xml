@@ -10,7 +10,7 @@
     <application
         android:name=".GlobalApplication"
         android:allowBackup="true"
-        android:icon="@drawable/scone_logo1"
+        android:icon="@drawable/scone_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
