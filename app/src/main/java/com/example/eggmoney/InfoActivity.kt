@@ -176,6 +176,11 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             startActivity(intent)
         }
 
+        // 알림 카드 클릭했을 때, NotificationActivity로 이동
+        main_info_card.setOnClickListener {
+            startActivity(Intent(this, NotificationActivity::class.java))
+        }
+
         //SwipeRefresh 구현 부분
         srl_main.setOnRefreshListener {
             // 사용자가 아래로 드래그 했다가 놓았을 때 호출 됩니다.

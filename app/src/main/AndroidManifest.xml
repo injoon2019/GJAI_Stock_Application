@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PresentActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".PresentActivity" />
         <activity android:name=".MyinfoActivity" />
         <activity android:name=".SearchResultActivity" />
         <activity

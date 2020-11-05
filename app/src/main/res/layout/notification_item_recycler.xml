@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@drawable/thema_rectangle"
+    android:elevation="20dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/notification_name"
+        android:text="인준님이"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:id="@+id/notification_text"
+        android:text=" 삼성전자 주식을 받았습니다"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="5"/>
+
+    <TextView
+        android:id="@+id/notification_date"
+        android:text="2020/11/05"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="3"/>
+</LinearLayout>

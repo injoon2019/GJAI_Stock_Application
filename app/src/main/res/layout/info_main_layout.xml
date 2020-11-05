@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="20"
             android:background="@drawable/notification_thema_rectangle"
@@ -59,8 +59,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_weight="3"
                 android:text="알림"
-                android:textSize="25dp"
                 android:textColor="#FBFAFA"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,13 +80,13 @@
             <TextView
                 android:id="@+id/main_info_card_text_main"
                 android:layout_width="0dp"
-                android:textColor="#FBFAFA"
                 android:layout_height="27dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="16"
                 android:text="구슬님께서 빌리님이 보내신 선물을 받았습니다."
+                android:textColor="#FBFAFA"
                 android:textSize="13dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -94,7 +94,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srl_main"
