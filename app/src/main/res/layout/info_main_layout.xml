@@ -85,7 +85,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="16"
-                android:text="구슬님께서 빌리님이 보내신 선물을 받았습니다."
+                android:text="아이유님이 조커님께서 보내신 선물을 받았습니다."
                 android:textColor="#FBFAFA"
                 android:textSize="13dp"
                 android:textStyle="bold"
