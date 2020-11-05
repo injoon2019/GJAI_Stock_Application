@@ -127,7 +127,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_info_card"
                 tools:listitem="@layout/item_recyclerview" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
