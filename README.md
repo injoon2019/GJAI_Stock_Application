@@ -85,6 +85,14 @@ com.google.android.gms.common.api.ApiException: 10:
 21. 앱 이름 변경: https://happy81.tistory.com/18
 
 22. 프로젝트 및 패키지명 변경 : https://dotworks.tistory.com/4
+
+23. 프로젝트 및 패키지 이름 변경 후에는 google_json 다시 맞춰주기
+
+24. 파이어베이스 변경 후에는 API 키를 발급 받아서 어플 키와 맞추기
+
+25. API 키가 안맞을때는 build를 지우고 다시 build 해보기: https://stackoverflow.com/questions/61453640/android-error-when-communicating-with-the-firebase-installations-server-api
+
+26. SwipeRefresh (당겨서 새로고침) : https://chjune0205.tistory.com/98
 ------
 ## 서버
 
