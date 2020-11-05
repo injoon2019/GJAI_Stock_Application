@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/present_back_button"
+        android:id="@+id/myinfo_back_button"
         android:layout_width="65dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
@@ -44,7 +44,7 @@
         android:background="#00060B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/present_back_button" />
+        app:layout_constraintTop_toBottomOf="@+id/myinfo_back_button" />
 
 
     <ImageView
