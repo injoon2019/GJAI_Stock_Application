@@ -5,7 +5,7 @@
     android:id="@+id/info_layout_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F6F5F8"
+    android:background="#FFFFFF"
     android:minHeight="?attr/actionBarSize">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +32,6 @@
             app:layout_constraintBottom_toBottomOf="@id/autocomplete_stock"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/autocomplete_stock" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

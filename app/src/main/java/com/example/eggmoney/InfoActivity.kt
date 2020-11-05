@@ -60,6 +60,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         var search_adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 1
         autocomplete_stock.setAdapter(search_adapter)
+        
 
         val title_data= resources.getStringArray(R.array.main_title_data) // 리사이클러뷰 부분 // 나중에 확인 !!!!
         val content_data = resources.getStringArray(R.array.main_content_data)
