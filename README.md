@@ -77,6 +77,10 @@ com.google.android.gms.common.api.ApiException: 10:
 17. 폰트 추가하기: https://hello-bryan.tistory.com/82
 
 18. 폰트 일괄 적용: https://pyxispub.uzuki.live/?p=245
+
+19. Autocomplete 아이템 클릭했을 때 이벤트 발생시키기: https://painone7.tistory.com/entry/AutoCompleteTextView-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%ED%81%B4%EB%A6%AD-%EC%9D%B4%EB%B2%A4%ED%8A%B8
+
+20. Autocomplete 아이템 클릭했을 때 이벤트 발생시키기2: https://painone7.tistory.com/entry/AutoCompleteTextView-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%ED%81%B4%EB%A6%AD-%EC%9D%B4%EB%B2%A4%ED%8A%B8
 ------
 ## 서버
 
