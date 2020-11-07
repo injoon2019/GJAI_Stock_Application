@@ -93,6 +93,8 @@ com.google.android.gms.common.api.ApiException: 10:
 25. API 키가 안맞을때는 build를 지우고 다시 build 해보기: https://stackoverflow.com/questions/61453640/android-error-when-communicating-with-the-firebase-installations-server-api
 
 26. SwipeRefresh (당겨서 새로고침) : https://chjune0205.tistory.com/98
+
+27. RecyclerView 코틀린 예제 : https://blog.yena.io/studynote/2017/12/06/Android-Kotlin-RecyclerView1.html
 ------
 ## 서버
 
