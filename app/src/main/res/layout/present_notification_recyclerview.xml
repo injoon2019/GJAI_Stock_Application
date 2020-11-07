@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/notification_recyclerView"
+    android:id="@+id/present_notification_recyclerView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
@@ -13,10 +13,10 @@
         android:id="@+id/notification_name"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="26dp"
         android:textColor="#000000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         tools:text="쿠폰이 전해졌습니다." />
 
     <TextView
-        android:id="@+id/notification_text"
+        android:id="@+id/notification_text_1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
@@ -36,10 +36,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notification_name"
-        tools:text="아이유님께서 조커님이 보내신 선물을 받았습니다.\n(감사인사 받기를 놓치지 마세요)" />
+        tools:text="아이유님께서 조커님이 보내신 선물을 받았습니다." />
 
     <TextView
-        android:id="@+id/notification_data"
+        android:id="@+id/notification_text_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="#3E3C3C"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notification_text_1"
+        tools:text="(감사인사 받기를 놓치지 마세요)" />
+
+    <TextView
+        android:id="@+id/notification_timestamp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
@@ -48,7 +63,7 @@
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notification_text"
+        app:layout_constraintTop_toBottomOf="@+id/notification_text_2"
         tools:text="11월 4일 11:50" />
 
     <View
@@ -58,7 +73,7 @@
         android:background="#4682B4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notification_data" />
+        app:layout_constraintTop_toBottomOf="@+id/notification_timestamp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
