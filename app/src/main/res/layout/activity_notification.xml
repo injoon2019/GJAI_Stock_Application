@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/notification_image1"
+            android:id="@+id/notification_back_button"
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:layout_marginStart="25dp"

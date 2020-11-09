@@ -1,9 +1,11 @@
 package com.eggmoney.scone
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_notification.*
+import kotlinx.android.synthetic.main.activity_present.*
 import kotlinx.android.synthetic.main.info_main_layout.*
 
 
@@ -63,6 +65,11 @@ class NotificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
+
+        notification_back_button.setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
+            finish()
+        }
 
         var nC_adapter = NotifucationCustomAdapter(this, notification_List)
         present_notification_main_Recycle.adapter = nC_adapter

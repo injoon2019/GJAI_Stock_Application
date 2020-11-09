@@ -10,7 +10,7 @@ class MyinfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lateinit var listener1 : RadioGroup.OnCheckedChangeListener
+        lateinit var listener1 : RadioGroup.OnCheckedChangeListener // 설문 조사
         lateinit var listener2 : RadioGroup.OnCheckedChangeListener
         lateinit var listener3 : RadioGroup.OnCheckedChangeListener
         setContentView(R.layout.activity_myinfo)
