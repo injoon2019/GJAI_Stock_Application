@@ -103,3 +103,10 @@ com.google.android.gms.common.api.ApiException: 10:
 3. Node.js, Google Cloud Platform의 App Engine 배포하기 : (자체 블로그 제작 예정)
 
 ------
+
+## 파이썬
+
+1. 정승윤(2017.7), FACTORIZATION MACHINE을 이용한 추천시스템 설계, 고려대학교 정보보호대학원
+2. 김보미(2019.10), VIP등급과 보안매체등급 정보를 이용한 협업필터링 기반 스마트뱅킹 금융상품 추천, 성균관대학교 일단대학원 데이터사이언스융합학과
+3. 이재웅(2017.2), Methods of Financial consumer classification and financial instrument recommendation based on machine learning using unstructured data, 경희대학교 대학원 경영학과
+4. 류기동(2019.2), 인공지능 기반 컨택센터 시스템 연구, 서울과학기술대학교 IT정책전문대학원 
