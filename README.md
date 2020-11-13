@@ -95,6 +95,8 @@ com.google.android.gms.common.api.ApiException: 10:
 26. SwipeRefresh (당겨서 새로고침) : https://chjune0205.tistory.com/98
 
 27. RecyclerView 코틀린 예제 : https://blog.yena.io/studynote/2017/12/06/Android-Kotlin-RecyclerView1.html
+
+28. 슬라이딩 탭 뷰 : https://shacoding.com/2019/08/28/android-%ED%94%84%EB%9E%98%EA%B7%B8%EB%A8%BC%ED%8A%B8%EB%A5%BC-%EC%9D%91%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%94%A9-%ED%83%AD%EB%B7%B0%EB%A5%BC-%EB%A7%8C%EB%93%A4%EC%96%B4/
 ------
 ## 서버
 
