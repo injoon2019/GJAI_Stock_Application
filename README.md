@@ -105,6 +105,7 @@ com.google.android.gms.common.api.ApiException: 10:
 ------
 
 ## 파이썬
+* 파이썬 프로젝트 파일 깃 주소: https://github.com/kokoball/byoungpyo2020-GJAI_Stock_Python 
 
 1. 정승윤(2017.7), FACTORIZATION MACHINE을 이용한 추천시스템 설계, 고려대학교 정보보호대학원
 2. 김보미(2019.10), VIP등급과 보안매체등급 정보를 이용한 협업필터링 기반 스마트뱅킹 금융상품 추천, 성균관대학교 일단대학원 데이터사이언스융합학과
