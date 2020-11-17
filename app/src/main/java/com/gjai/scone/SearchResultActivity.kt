@@ -1,6 +1,7 @@
 package com.gjai.scone
 
 import BuyCoupon
+import Coupon
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent

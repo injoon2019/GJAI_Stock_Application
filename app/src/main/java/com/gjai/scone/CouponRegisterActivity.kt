@@ -109,3 +109,4 @@ class CouponRegisterActivity : AppCompatActivity() {
     }
 
 }
+data class CouponRegisterResponse (val ResultCode: String, val ResultMessage: String)

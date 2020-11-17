@@ -75,3 +75,11 @@ data class RepositoryItem(
     val watchers: Int,
     val watchers_count: Int
 )
+
+data class License(
+    val key: String,
+    val name: String,
+    val node_id: String,
+    val spdx_id: String,
+    val url: String
+)

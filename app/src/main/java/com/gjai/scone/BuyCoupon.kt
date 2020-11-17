@@ -1,4 +1,3 @@
-import com.gjai.scone.Coupon
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,3 +12,9 @@ interface BuyCoupon {
         @Field("BuyPrice") buyprice:Int
     ): Call<Coupon>
 }
+
+data class Coupon (
+    val ResultCode: String,
+    val ResultMessage: String,
+    val CouponCode: String
+)
