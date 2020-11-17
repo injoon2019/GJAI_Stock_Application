@@ -15,14 +15,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.gjai.scone.main_rank_ui.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_info.*
+import kotlinx.android.synthetic.main.activity_main_rank.*
 import kotlinx.android.synthetic.main.info_main_layout.*
 import kotlinx.android.synthetic.main.info_toolbar.*
 import org.apache.poi.hssf.usermodel.HSSFCell
@@ -53,11 +56,27 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
+        val rank_Adapter =
+            MainRankAdapter(supportFragmentManager)  // 슬라이딩 탭뷰 부분
+        // 뷰 페이저에 어댑터 연결
+        view_pager.adapter = rank_Adapter
+        view_pager.currentItem=0
+        // 탭 레아아웃에 뷰페이저 연결
+        tabs.setupWithViewPager(view_pager)
+        // 탭뷰 각각 이름 만들기
+        val feel=arrayOf("10대","20대","30대","40대","50대 이상")
+        for(i in 0..4)
+            tabs.getTabAt(i)?.setText(feel[i])
+//        fab.setOnClickListener { view ->
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
+//        }
+
         val suggestion = resources.getStringArray(R.array.stock_list)// 자동완성 검색기능 부분
         var search_adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 1
         autocomplete_stock.setAdapter(search_adapter)
-        
+
 
         val title_data= resources.getStringArray(R.array.main_title_data) // 리사이클러뷰 부분 // 나중에 확인 !!!!
         val content_data = resources.getStringArray(R.array.main_content_data)
@@ -216,6 +235,7 @@ class InfoActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
             srl_main.isRefreshing = false //서버 통신 완료 후 호출해줍니다.
         }
     }
+
 
     private fun readExcelFileFromAssets(value: String) {
         try {

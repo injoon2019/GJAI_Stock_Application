@@ -8,34 +8,35 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
-        android:name="com.gjai.scone.GlobalApplication"
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@drawable/scone_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gjai.scone.NicknameActivity"></activity>
-        <activity android:name="com.gjai.scone.NotificationActivity" />
-        <activity android:name="com.gjai.scone.PresentActivity" />
-        <activity android:name="com.gjai.scone.MyinfoActivity" />
-        <activity android:name="com.gjai.scone.SearchResultActivity" />
+        <activity android:name=".QuestionnaireActivity"></activity>
+        <activity android:name=".NotificationActivity" />
+        <activity android:name=".PresentActivity" />
+        <activity android:name=".MyinfoActivity" />
+        <activity android:name=".SearchResultActivity" />
         <activity
-            android:name="com.gjai.scone.CouponRegisterActivity"
+            android:name=".CouponRegisterActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.gjai.scone.SignupActivity" />
-        <activity android:name="com.gjai.scone.InfoActivity" />
-        <activity android:name="com.gjai.scone.GoogleSignInActivity" />
-        <activity android:name="com.gjai.scone.SplashActivity">
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".GoogleSignInActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.gjai.scone.MainActivity" />
-        <activity android:name="com.gjai.scone.SigninActivity" /> <!-- - 안드로이드 8.0 이상 푸시 처리 추가 코드 -->
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NicknameActivity" />
+        <activity android:name=".SigninActivity" /> <!-- - 안드로이드 8.0 이상 푸시 처리 추가 코드 -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/scone_logo1" />
@@ -44,7 +45,7 @@
             android:resource="@color/colorAccent" />
 
         <service
-            android:name="com.gjai.scone.MyFirebaseMessagingService"
+            android:name=".MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true"
             android:stopWithTask="false">

@@ -23,6 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="0.3dp"
             android:background="#00060B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -95,6 +97,22 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <include
+            android:id="@+id/include"
+            android:background="#F6F5F8"
+            layout="@layout/activity_main_rank"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_info_card" />
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srl_main"
             android:layout_width="match_parent"
@@ -103,8 +121,9 @@
             android:background="#F6F5F8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_info_card">
+            app:layout_constraintTop_toBottomOf="@+id/include">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/xml_info_rv"

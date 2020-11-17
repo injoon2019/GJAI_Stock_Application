@@ -104,7 +104,8 @@ class GoogleSignInActivity : AppCompatActivity(),View.OnClickListener {
     // toInfoActivity
     fun toInfoActivity(user: FirebaseUser?) {
         if (user != null) { // MainActivity 로 이동
-            startActivity(Intent(this, InfoActivity::class.java))
+            startActivity(Intent(this, NicknameActivity::class.java))
+//            startActivity(Intent(this, InfoActivity::class.java))
             finish()
         }
     } // toMainActivity End
