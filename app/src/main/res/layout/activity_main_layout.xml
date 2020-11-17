@@ -5,15 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
-    android:layout_height = "match_parent"
-    android:orientation="vertical"
-    android:focusable = "true"
-    android:focusableInTouchMode = "true">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
-    <!-- 툴바 -->
-    <include layout="@layout/info_toolbar"/>
-
-    <!-- 메인 view -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +22,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_info_card"
@@ -62,7 +57,7 @@
                 android:layout_weight="3"
                 android:text="알림"
                 android:textColor="#FBFAFA"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -75,7 +70,7 @@
                 android:layout_weight="4"
                 android:text="오전 11:50"
                 android:textColor="#FBFAFA"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,24 +84,22 @@
                 android:layout_weight="16"
                 android:text="아이유님이 조커님께서 보내신 선물을 받았습니다."
                 android:textColor="#FBFAFA"
-                android:textSize="13dp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <include
             android:id="@+id/include"
-            android:background="#F6F5F8"
             layout="@layout/activity_main_rank"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:background="#F6F5F8"
             android:focusable="true"
             android:focusableInTouchMode="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,9 +110,7 @@
             android:id="@+id/srl_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
             android:background="#F6F5F8"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +136,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_info_card"
                 tools:listitem="@layout/item_recyclerview" />
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
