@@ -101,6 +101,8 @@ com.google.android.gms.common.api.ApiException: 10:
 29. Seek Bar: https://m.blog.naver.com/PostView.nhn?blogId=cosmosjs&logNo=221461944435&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 30. BottomNavigationView + Fragment + ViewPager2 : https://doitddo.tistory.com/89
+
+31. Fragment intent 사용 방법 : https://ksb0511.tistory.com/entry/Fragment%EC%97%90%EC%84%9C-Activity%EB%A1%9C-%ED%99%94%EB%A9%B4%EC%A0%84%ED%99%98
 ------
 ## 서버
 
