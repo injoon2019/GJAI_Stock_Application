@@ -1,10 +1,13 @@
 package com.gjai.scone
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import kotlinx.android.synthetic.main.activity_main_layout.*
 import kotlinx.android.synthetic.main.activity_main_rank.*
@@ -105,3 +108,23 @@ class MainlayoutActivity : AppCompatActivity() {
     }
 }
 class Info (val main_title: String, val main_content: String, val main_image: String)
+
+class RankPagerAdapter(private val mList: ArrayList<Bitmap>): RecyclerView.Adapter<RankPagerAdapter.PagerViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder =
+        PagerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false))
+
+    override fun getItemCount(): Int = mList.size
+
+    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
+        holder.bind(mList[position])
+    }
+
+    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val photoView = itemView.find<PhotoView>(R.id.photoView)
+
+        fun bind(image: Bitmap) {
+            photoView.imageBitmap = image //anko 라이브러리 사용
+        }
+    }
+}
