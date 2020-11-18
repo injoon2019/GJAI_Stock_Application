@@ -358,7 +358,7 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         when (item.itemId) {
             R.id.item0 -> {  // 환경설정
-                startActivity(Intent(this, MyinfoActivity::class.java))
+                startActivity(Intent(this, SettingActivity::class.java))
             }
             R.id.item1 -> {  // 내정보
                 startActivity(Intent(this, MyinfoActivity::class.java))
