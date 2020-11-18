@@ -326,7 +326,7 @@ class InfoActivity : AppCompatActivity() {
 
     }
 
-    private fun initNavigationBar() {
+private fun initNavigationBar() {
         bottomNavigationView.run {
             setOnNavigationItemSelectedListener {
                 val page = when (it.itemId) {
@@ -341,6 +341,7 @@ class InfoActivity : AppCompatActivity() {
                     main_viewpager.currentItem = page
                 }
                 true
+
             }
             selectedItemId = R.id.item2
         }
