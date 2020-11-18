@@ -7,22 +7,27 @@
 
         <item android:id = "@+id/item0"
             android:icon = "@drawable/ic_baseline_settings_24"
+            android:enabled="true"
             android:title = "환경설정"
             />
         <item android:id = "@+id/item1"
             android:icon = "@drawable/ic_baseline_account_circle_24"
+            android:enabled="true"
             android:title = "내 정보"
             />
         <item android:id = "@+id/item2"
             android:icon = "@drawable/ic_baseline_house_24"
+            android:enabled="true"
             android:title = "메인 화면"
             />
         <item android:id = "@+id/item3"
             android:icon = "@drawable/ic_baseline_redeem_24"
+            android:enabled="true"
             android:title = "선물 내역"
             />
         <item android:id = "@+id/item4"
             android:icon = "@drawable/ic_baseline_post_add_24"
+            android:enabled="true"
             android:title = "쿠폰 등록"
             />
 

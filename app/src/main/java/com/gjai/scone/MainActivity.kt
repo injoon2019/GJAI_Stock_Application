@@ -7,7 +7,7 @@ import android.os.Handler
 
 
 import com.bumptech.glide.Glide
-
+// 안쓰고 있는듯
 val SPLASH_VIEW_TIME : Long = 1500
 
 class MainActivity : AppCompatActivity() {

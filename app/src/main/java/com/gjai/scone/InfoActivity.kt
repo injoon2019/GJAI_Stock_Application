@@ -6,26 +6,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.gjai.scone.Fragments.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_info.*
-import kotlinx.android.synthetic.main.activity_main_rank.*
-import kotlinx.android.synthetic.main.activity_main_layout.*
 import kotlinx.android.synthetic.main.info_toolbar.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
@@ -39,56 +35,74 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStream
 
 
-class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener  {
+class InfoActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth //firebase Auth
-    private lateinit var googleSignInClient: GoogleSignInClient //google cl ient
-    private lateinit var recyclerView: RecyclerView //recyclerView
+    private lateinit var googleSignInClient: GoogleSignInClient //google client
+
+    private val couponRegisterFragment by lazy { CouponRegisterFragment() } // 네비게이션 탭 뷰 프레그먼트 부분
+    private val mainFragment by lazy { MainFragment() }
+    private val myInfoFragment by lazy { MyInfoFragment() }
+    private val presentFragment by lazy { PresentFragment() }
+    private val settingFragment by lazy { SettingFragment() }
+
+    private val fragments_list: List<Fragment> = listOf(
+        settingFragment, myInfoFragment, mainFragment, presentFragment, couponRegisterFragment
+    )
+
+    private val pagerAdapter: MainViewPagerAdapter by lazy {
+        MainViewPagerAdapter(
+            this,
+            fragments_list
+        )
+    }
 
     private lateinit var stockCode: String
 
-    private val BaseURL:String = "https://scone-294502.du.r.appspot.com"
-    private var news_list:Int = 0
-
-    var main_viewList = ArrayList<View>()
+    private val BaseURL: String = "https://scone-294502.du.r.appspot.com"
 
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))   // bottomNavigationView 부분
-        main_viewList.add(layoutInflater.inflate(R.layout.activity_myinfo, null))
-        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))
-        main_viewList.add(layoutInflater.inflate(R.layout.activity_present, null))
-        main_viewList.add(layoutInflater.inflate(R.layout.activity_coupon_register, null))
+        initViewPager()
+        initNavigationBar()
 
-        main_viewpager.adapter = MainPagerAdapter()
-        //main_viewpager.currentItem = 1
+//        bottomNavigationView.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
+//        mainFragment = MainFragment.newInstance()
+//        supportFragmentManager.beginTransaction().replace(R.id.main_viewpager, mainFragment).commit()
 
-        main_viewpager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener(){
-            override fun onPageSelected(position: Int) {
-                when(position) {
-                    0 -> bottomNavigationView.selectedItemId = R.id.item0
-                    1 -> bottomNavigationView.selectedItemId = R.id.item1
-                    2 -> bottomNavigationView.selectedItemId = R.id.item2
-                    3 -> bottomNavigationView.selectedItemId = R.id.item3
-                    4 -> bottomNavigationView.selectedItemId = R.id.item4
-                }
-            }
-        })
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.item0 -> main_viewpager.setCurrentItem(0)
-                R.id.item1 -> main_viewpager.setCurrentItem(1)
-                R.id.item2 -> main_viewpager.setCurrentItem(2)
-                R.id.item3 -> main_viewpager.setCurrentItem(3)
-                R.id.item4 -> main_viewpager.setCurrentItem(4)
-            }
-            return@setOnNavigationItemSelectedListener true       // 여기까지
-         }
-
+//        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))   // bottomNavigationView 부분
+//        main_viewList.add(layoutInflater.inflate(R.layout.activity_myinfo, null))
+//        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))
+//        main_viewList.add(layoutInflater.inflate(R.layout.activity_present, null))
+//        main_viewList.add(layoutInflater.inflate(R.layout.activity_coupon_register, null))
+//
+//        main_viewpager.adapter = MainPagerAdapter()
+//        //main_viewpager.currentItem = 1
+//
+//        main_viewpager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener(){
+//            override fun onPageSelected(position: Int) {
+//                when(position) {
+//                    0 -> bottomNavigationView.selectedItemId = R.id.item0
+//                    1 -> bottomNavigationView.selectedItemId = R.id.item1
+//                    2 -> bottomNavigationView.selectedItemId = R.id.item2
+//                    3 -> bottomNavigationView.selectedItemId = R.id.item3
+//                    4 -> bottomNavigationView.selectedItemId = R.id.item4
+//                }
+//            }
+//        })
+//        bottomNavigationView.setOnNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.item0 -> main_viewpager.setCurrentItem(0)
+//                R.id.item1 -> main_viewpager.setCurrentItem(1)
+//                R.id.item2 -> main_viewpager.setCurrentItem(2)
+//                R.id.item3 -> main_viewpager.setCurrentItem(3)
+//                R.id.item4 -> main_viewpager.setCurrentItem(4)
+//            }
+//            return@setOnNavigationItemSelectedListener true       // 여기까지
+//         }
 
 
 //        val rank_Adapter =
@@ -112,16 +126,12 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         autocomplete_stock.threshold = 1
         autocomplete_stock.setAdapter(search_adapter)
 
-
-
-
         setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 드로어를 꺼낼 홈 버튼 활성화
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24) // 홈버튼 이미지 변경
         supportActionBar?.setDisplayShowTitleEnabled(false) // 툴바에 타이틀 안보이게
 
-//        main_navigationView.setNavigationItemSelectedListener(this)
-//
+
 //        //네비게이션 헤더 가져오는 부분
 //        val navigationView: NavigationView = findViewById(R.id.main_navigationView)
 //        val headerView: View = navigationView.getHeaderView(0)
@@ -170,22 +180,25 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 //        Toast.makeText(this, user?.uid.toString(), Toast.LENGTH_SHORT).show()
 
         //이하 네트워크 통신 코드
-        val retrofit = Retrofit.Builder().baseUrl(BaseURL) .addConverterFactory(
-            GsonConverterFactory.create()).build();
+        val retrofit = Retrofit.Builder().baseUrl(BaseURL).addConverterFactory(
+            GsonConverterFactory.create()
+        ).build();
         var loginCheck = retrofit.create(LoginCheck::class.java);
-        loginCheck.checkLogin(user?.uid.toString(), user?.displayName.toString()).enqueue(object: Callback<Login> {
-            var login:Login? = null
-            override fun onFailure(call: Call<Login>, t: Throwable) { //실패할 경우
-                t.message?.let { Log.e("LOGIN", it) }
-                var dialog = AlertDialog.Builder(this@InfoActivity)
-                dialog.setTitle("에러")
-                dialog.setMessage("호출 실패")
-                dialog.show()
-            }
-            override fun onResponse(call: Call<Login>, response: Response<Login>) { //정상응답이 올경우
-                login = response.body()
-            }
-        })
+        loginCheck.checkLogin(user?.uid.toString(), user?.displayName.toString())
+            .enqueue(object : Callback<Login> {
+                var login: Login? = null
+                override fun onFailure(call: Call<Login>, t: Throwable) { //실패할 경우
+                    t.message?.let { Log.e("LOGIN", it) }
+                    var dialog = AlertDialog.Builder(this@InfoActivity)
+                    dialog.setTitle("에러")
+                    dialog.setMessage("호출 실패")
+                    dialog.show()
+                }
+
+                override fun onResponse(call: Call<Login>, response: Response<Login>) { //정상응답이 올경우
+                    login = response.body()
+                }
+            })
 
 
 //        //네비게이션 드로어 헤더에 사용자 정보로 보여주는 부분
@@ -221,7 +234,6 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
-
     private fun readExcelFileFromAssets(value: String) {
         try {
             val myInput: InputStream // assetManager 초기 설정
@@ -233,7 +245,7 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             val sheet = myWorkBook.getSheetAt(0) // 워크북에서 시트 가져오기
             val rowIter = sheet.rowIterator() //행을 반복할 변수 만들어주기
             var rowno = 0 //행 넘버 변수 만들기
-            var answer_array: Array<String> = arrayOf(value,"퇴근시켜줘 제발" ) // 확인 가능한 배열 생성
+            var answer_array: Array<String> = arrayOf(value, "퇴근시켜줘 제발") // 확인 가능한 배열 생성
 
             while (rowIter.hasNext()) {
                 if (answer_array[1] != "퇴근시켜줘 제발") break
@@ -243,7 +255,7 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     var colno = 0 //열 넘버 변수 만들기
                     while (cellIter.hasNext()) {  //열 반복문
                         val myCell = cellIter.next() as HSSFCell
-                        if (colno === 0){
+                        if (colno === 0) {
                             if (myCell.toString() != value) break
                         }
                         if (colno === 1) {
@@ -254,7 +266,7 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 }
                 rowno++
             }
-            stockCode =  answer_array[1].toString()
+            stockCode = answer_array[1].toString()
 //            Toast.makeText(this, answer_array[1], Toast.LENGTH_LONG).show() // 확인메시지 출력
         } catch (e: Exception) {
             Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
@@ -271,37 +283,6 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
         return super.onOptionsItemSelected(item)
     }
-
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        val user = FirebaseAuth.getInstance().currentUser
-//
-//        when (item.itemId) {
-//            R.id.account -> {  // 내정보
-//                startActivity(Intent(this, MyinfoActivity::class.java))
-//            }
-//            R.id.item2 -> { // 선물함
-//                startActivity(Intent(this, PresentActivity::class.java))
-//            }
-//            R.id.item3 -> {  //쿠폰 등록
-//                val intent = Intent(this, CouponRegisterActivity::class.java)
-//                intent.putExtra("uid", user?.uid.toString())
-//                startActivity(intent)
-//            }
-//            R.id.item2_1 -> Toast.makeText(this, "환경정보", Toast.LENGTH_SHORT).show() //환경정보
-//            R.id.item2_2 -> signOut() //로그아웃
-//        }
-//        return false
-//    }
-
-//    override fun onBackPressed() { //뒤로가기 처리
-//        if (main_drawer_layout.isDrawerOpen(GravityCompat.START)) {
-//            main_drawer_layout.closeDrawers()
-//            // 테스트를 위해 뒤로가기 버튼시 Toast 메시지
-//            Toast.makeText(this, "back btn clicked", Toast.LENGTH_SHORT).show()
-//        } else {
-//            super.onBackPressed()
-//        }
-//    }
 
     private fun signOut() { // 로그아웃
         // Firebase sign out
@@ -335,49 +316,54 @@ class InfoActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
     }
 
-    inner class MainPagerAdapter : PagerAdapter() {
-        override fun isViewFromObject(view: View, `object`: Any) = view == `object`
+    inner class MainViewPagerAdapter(
+        activity: AppCompatActivity,
+        private val fragments: List<Fragment>
+    ) : FragmentStateAdapter(activity) {
 
-        override fun getCount() = main_viewList.size
+        override fun getItemCount(): Int = fragments.size
+        override fun createFragment(position: Int): Fragment = fragments[position]
 
-        override fun instantiateItem(container: ViewGroup, position: Int): Any {
-            var curView = main_viewList[position]
-            main_viewpager.addView(curView)
-            return curView
-        }
+    }
 
-        override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-            main_viewpager.removeView(`object` as View)
+    private fun initNavigationBar() {
+        bottomNavigationView.run {
+            setOnNavigationItemSelectedListener {
+                val page = when (it.itemId) {
+                    R.id.item0 -> 0
+                    R.id.item1 -> 1
+                    R.id.item2 -> 2
+                    R.id.item3 -> 3
+                    R.id.item4 -> 4
+                    else -> 2
+                }
+                if (page != main_viewpager.currentItem) {
+                    main_viewpager.currentItem = page
+                }
+                true
+            }
+            selectedItemId = R.id.item2
         }
     }
 
-
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val user = FirebaseAuth.getInstance().currentUser
-
-        when (item.itemId) {
-            R.id.item0 -> {  // 환경설정
-                startActivity(Intent(this, MyinfoActivity::class.java))
-            }
-            R.id.item1 -> {  // 내정보
-                startActivity(Intent(this, MyinfoActivity::class.java))
-            }
-            R.id.item2 -> { // 메인 화면
-                startActivity(Intent(this, MainlayoutActivity::class.java))
-            }
-            R.id.item3 -> { // 선물함
-                startActivity(Intent(this, PresentActivity::class.java))
-            }
-            R.id.item4 -> {  //쿠폰 등록
-                val intent = Intent(this, CouponRegisterActivity::class.java)
-                intent.putExtra("uid", user?.uid.toString())
-                startActivity(intent)
-            }
-
-            //R.id.item2_2 -> signOut() //로그아웃
+    private fun initViewPager() {
+        main_viewpager.run {
+            adapter = pagerAdapter
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    val navigation = when (position) {
+                        0 -> R.id.item0
+                        1 -> R.id.item1
+                        2 -> R.id.item2
+                        3 -> R.id.item3
+                        4 -> R.id.item4
+                        else -> R.id.item2
+                    }
+                    if (bottomNavigationView.selectedItemId != navigation) {
+                        bottomNavigationView.selectedItemId = navigation
+                    }
+                }
+            })
         }
-        return false
     }
 }
-

@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import kotlinx.android.synthetic.main.activity_main_layout.*
 import kotlinx.android.synthetic.main.activity_main_rank.*
 import kotlinx.android.synthetic.main.info_toolbar.*
@@ -22,13 +27,17 @@ class MainlayoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_layout)
 
+        setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
+
+        // 알림 카드 클릭했을 때, NotificationActivity로 이동
+        main_info_card.setOnClickListener {
+            startActivity(Intent(this, NotificationActivity::class.java))
+        }
+
 //        present_back_button.setOnClickListener {
 //            startActivity(Intent(this, InfoActivity::class.java))
 //            finish()
 //        }
-        val title_data= resources.getStringArray(R.array.main_title_data) // 리사이클러뷰 부분 // 나중에 확인 !!!!
-        val content_data = resources.getStringArray(R.array.main_content_data)
-        val image_data = resources.getStringArray(R.array.main_image_data)
 
         var main_info_List = arrayOf<Info>(
             Info("LG전자", "야심차게 준비한  이것 도대체 무엇이길래 사람들이 주목할까?",  "lg_content"),
@@ -41,12 +50,6 @@ class MainlayoutActivity : AppCompatActivity() {
         val RV_adapter = RecyclerAdapterInfo(this,main_info_List)
         xml_info_rv.adapter = RV_adapter
 
-        setSupportActionBar(info_layout_toolbar) // 툴바를 액티비티의 앱바로 지정
-
-        // 알림 카드 클릭했을 때, NotificationActivity로 이동
-        main_info_card.setOnClickListener {
-            startActivity(Intent(this, NotificationActivity::class.java))
-        }
 
         //SwipeRefresh 구현 부분
         srl_main.setOnRefreshListener {
@@ -83,14 +86,15 @@ class MainlayoutActivity : AppCompatActivity() {
         rank_viewList.add(layoutInflater.inflate(R.layout.fragment_forty_age, null))
         rank_viewList.add(layoutInflater.inflate(R.layout.fragment_fifty_age, null))
 
-        view_pager.adapter = RankPagerAdapter()
-        tabLayout.setupWithViewPager(view_pager)
+        view_pager.adapter = MainRankFragmentAdapter(fragment = Fragment())
+        //tabLayout.setupWithViewPager(view_pager)
         tabLayout.getTabAt(0)?.setText("10대")
         tabLayout.getTabAt(1)?.setText("20대")
         tabLayout.getTabAt(2)?.setText("30대")
         tabLayout.getTabAt(3)?.setText("40대")
         tabLayout.getTabAt(4)?.setText("50대 이상")
     }
+
     inner class RankPagerAdapter : PagerAdapter() {
         override fun isViewFromObject(view: View, `object`: Any) = view == `object`
 
@@ -106,25 +110,30 @@ class MainlayoutActivity : AppCompatActivity() {
             view_pager.removeView(`object` as View)
         }
     }
+
+
 }
 class Info (val main_title: String, val main_content: String, val main_image: String)
 
-class RankPagerAdapter(private val mList: ArrayList<Bitmap>): RecyclerView.Adapter<RankPagerAdapter.PagerViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder =
-        PagerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false))
-
-    override fun getItemCount(): Int = mList.size
-
-    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
-        holder.bind(mList[position])
-    }
-
-    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val photoView = itemView.find<PhotoView>(R.id.photoView)
-
-        fun bind(image: Bitmap) {
-            photoView.imageBitmap = image //anko 라이브러리 사용
-        }
-    }
-}
+//class RankPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder =
+//        PagerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false))
+//
+//    override fun getItemCount(): Int = 4
+//    override fun createFragment(position: Int): Fragment {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
+//        holder.bind(mList[position])
+//    }
+//
+//    inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        private val photoView = itemView.find<PhotoView>(R.id.photoView)
+//
+//        fun bind(image: Bitmap) {
+//            photoView.imageBitmap = image //anko 라이브러리 사용
+//        }
+//    }
+//}
