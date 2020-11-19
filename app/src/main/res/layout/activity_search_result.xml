@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="회사이름"
         android:textSize="40sp"
@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="₩ 59, 700"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -59,7 +59,11 @@
         android:id="@+id/activity_search_gift_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="#2980B9"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/notification_thema_rectangle"
         android:text="선물하기"
         android:textColor="#FBFAFA"
         android:textSize="20dp"
@@ -67,5 +71,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stock_graph" />
+
+    <Button
+        android:id="@+id/activity_search_gift_button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/notification_thema_rectangle"
+        android:text="자세히"
+        android:textColor="#FBFAFA"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

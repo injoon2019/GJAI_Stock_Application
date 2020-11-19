@@ -29,7 +29,6 @@ class SearchResultActivity : AppCompatActivity() {
     private lateinit var stockName:String
     private val BaseURL:String = "https://scone-294502.du.r.appspot.com"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_result)
@@ -39,7 +38,7 @@ class SearchResultActivity : AppCompatActivity() {
         stockName = intent.getStringExtra("stock_name").toString()
         val uid = intent.getStringExtra("uid")
 
-        stock_price.text = "가격을 로딩중입니다"
+        stock_price.text = "로딩중..."
         // 가격 받기 위해 네트워크 통신 코드
         val retrofit = Retrofit.Builder().baseUrl(BaseURL) .addConverterFactory(
             GsonConverterFactory.create()).build();
