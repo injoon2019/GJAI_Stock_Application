@@ -59,8 +59,9 @@ class SearchResultActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<StockPrice>, response: Response<StockPrice>) {
+                val stringw = "￦ "
                 findprice_response = response.body()
-                stock_price.text = findprice_response?.price.toString()
+                stock_price.text = stringw + findprice_response?.price.toString()
             }
 
         })

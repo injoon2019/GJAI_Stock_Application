@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.gjai.scone.*
-//import com.gjai.scone.Info
 import kotlinx.android.synthetic.main.activity_main_layout.*
 import kotlinx.android.synthetic.main.activity_main_layout.view.*
 
@@ -51,7 +50,6 @@ class  MainFragment : Fragment() {
         maincardinfo?.setOnClickListener {
             v -> startActivity(Intent(getActivity(), NotificationActivity::class.java))
         }
-
 
         var main_info_List = arrayOf<Info>(
             Info("LG전자", "야심차게 준비한  이것 도대체 무엇이길래 사람들이 주목할까?", "lg_content"),
@@ -97,7 +95,6 @@ class  MainFragment : Fragment() {
             srl_main.isRefreshing = false //서버 통신 완료 후 호출해줍니다.
         }
 
-
         return view
     }
 }
@@ -139,8 +136,6 @@ class RecyclerAdapterInfoFragment(val context: MainFragment, val infoList: Array
             /* 나머지 TextView와 String 데이터를 연결한다. */
             mainTitle?.text = info.main_title
             mainContent?.text = info.main_content
-
-
         }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +10,11 @@
 
     <ImageView
         android:id="@+id/search_result_back_button"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_width="35dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop = "10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,10 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:text="회사이름"
-        android:textSize="30dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_result_back_button" />
 
@@ -34,23 +36,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="₩ 59, 700"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="₩ 59, 700"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stock_name" />
 
 
     <ImageView
-        android:layout_marginTop="30dp"
         android:id="@+id/stock_graph"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/samsung_stock_graph"
-        app:layout_constraintTop_toBottomOf="@+id/stock_price"
-        tools:layout_editor_absoluteX="73dp" />
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/search_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stock_price" />
 
     <Button
         android:id="@+id/activity_search_gift_button"

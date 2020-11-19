@@ -30,15 +30,5 @@
             android:enabled="true"
             android:title = "쿠폰 등록"
             />
-
-        <!--        <item android:id = "@+id/item2_1"-->
-        <!--            android:icon = "@drawable/ic_baseline_settings_24"-->
-        <!--            android:title = "환경 설정"-->
-        <!--            />-->
-
-        <!--        <item android:id = "@+id/item2_2"-->
-        <!--            android:icon = "@drawable/ic_baseline_settings_power_24"-->
-        <!--            android:title = "로그아웃"-->
-        <!--            />-->
     </group>
 </menu>
