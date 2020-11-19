@@ -2,6 +2,8 @@ package com.gjai.scone
 
 import BuyCoupon
 import Coupon
+import FindPrice
+import StockPrice
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
@@ -36,6 +38,33 @@ class SearchResultActivity : AppCompatActivity() {
         var stockCode = intent.getStringExtra("stock_code")
         stockName = intent.getStringExtra("stock_name").toString()
         val uid = intent.getStringExtra("uid")
+
+        stock_price.text = "가격을 로딩중입니다"
+        // 가격 받기 위해 네트워크 통신 코드
+        val retrofit = Retrofit.Builder().baseUrl(BaseURL) .addConverterFactory(
+            GsonConverterFactory.create()).build();
+        var findprice = retrofit.create(FindPrice::class.java);
+
+        findprice.findStockPrice(stockCode).enqueue(object:
+            Callback<StockPrice> {
+
+            var findprice_response:StockPrice? = null
+
+            override fun onFailure(call: Call<StockPrice>, t: Throwable) {
+                t.message?.let { Log.e("LOGIN", it) }
+                var dialog = AlertDialog.Builder(this@SearchResultActivity)
+                dialog.setTitle("에러")
+                dialog.setMessage("호출 실패")
+                dialog.show()
+            }
+
+            override fun onResponse(call: Call<StockPrice>, response: Response<StockPrice>) {
+                findprice_response = response.body()
+                stock_price.text = findprice_response?.price.toString()
+            }
+
+        })
+
 
         search_result_back_button.setOnClickListener {
             startActivity(Intent(this, InfoActivity::class.java))
