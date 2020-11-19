@@ -39,6 +39,8 @@ class InfoActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth //firebase Auth
     private lateinit var googleSignInClient: GoogleSignInClient //google client
 
+    private val BaseURL: String = "https://scone-294502.du.r.appspot.com"
+
     private val couponRegisterFragment by lazy { CouponRegisterFragment() } // 네비게이션 탭 뷰 프레그먼트 부분
     private val mainFragment by lazy { MainFragment() }
     private val myInfoFragment by lazy { MyInfoFragment() }
@@ -58,10 +60,6 @@ class InfoActivity : AppCompatActivity() {
 
     private lateinit var stockCode: String
 
-    private val BaseURL: String = "https://scone-294502.du.r.appspot.com"
-
-
-    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -326,7 +324,7 @@ class InfoActivity : AppCompatActivity() {
 
     }
 
-private fun initNavigationBar() {
+    private fun initNavigationBar() {
         bottomNavigationView.run {
             setOnNavigationItemSelectedListener {
                 val page = when (it.itemId) {

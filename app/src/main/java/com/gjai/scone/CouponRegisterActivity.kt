@@ -95,7 +95,7 @@ class CouponRegisterActivity : AppCompatActivity() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {  // 뒤로가기 홈 버튼
         val id = item.itemId
         when (id) {
             android.R.id.home -> {
