@@ -11,9 +11,12 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.ContactsContract
 import android.util.Log
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.activity_after_present.*
 
 import kotlinx.android.synthetic.main.activity_search_result.*
 import retrofit2.Call
@@ -110,6 +113,16 @@ class SearchResultActivity : AppCompatActivity() {
             intent.setData(Uri.parse("content://com.android.contacts/data/phones"));
             startActivityForResult(intent, 10);
 
+            // 선물 주고나서 다이얼로그 띄우기
+            val alertDialog  = AlertDialog.Builder(this@SearchResultActivity).create()
+            val dialogView = layoutInflater.inflate(R.layout.activity_after_present, null)
+            alertDialog.setView(dialogView)
+            alertDialog.show()
+            alertDialog.window?.setLayout(800,700)
+
+//            dialog.setTitle("에러")
+//            dialog.setMessage("호출 실패")
+//            dialog.show()
         }
     }
 

@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".AfterPresentActivity"></activity>
+        <activity android:name=".SettingActivity" />
         <activity android:name=".QuestionnaireActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".PresentActivity" />
