@@ -15,9 +15,12 @@ http://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017
 ------
 
 ## 실행 화면
-로그인 후 닉네임 등록 페이지(https://user-images.githubusercontent.com/48192081/100099716-2e85ce00-2ea3-11eb-8844-69f92b8a4cb4.png alt="alt text" width="300" height="500">
-로그인 화면<img src=https://user-images.githubusercontent.com/48192081/100099732-347baf00-2ea3-11eb-9300-5f0f16d8931b.png alt="alt text" width="300" height="500">
-메인 화면<img src=https://user-images.githubusercontent.com/48192081/100099735-35144580-2ea3-11eb-9be3-e26f314d0582.png alt="alt text" width="300" height="500">
+로그인 후 닉네임 등록 페이지
+<img src=https://user-images.githubusercontent.com/48192081/100099716-2e85ce00-2ea3-11eb-8844-69f92b8a4cb4.png alt="alt text" width="300" height="500">
+로그인 화면
+<img src=https://user-images.githubusercontent.com/48192081/100099732-347baf00-2ea3-11eb-9300-5f0f16d8931b.png alt="alt text" width="300" height="500">
+메인 화면
+<img src=https://user-images.githubusercontent.com/48192081/100099735-35144580-2ea3-11eb-9be3-e26f314d0582.png alt="alt text" width="300" height="500">
 선물 내역<img src=https://user-images.githubusercontent.com/48192081/100099740-35acdc00-2ea3-11eb-9045-8880ff894e4f.png alt="alt text" width="300" height="500">
 선물 완료창<img src=https://user-images.githubusercontent.com/48192081/100099743-36457280-2ea3-11eb-8cb3-134b226159d3.png alt="alt text" width="300" height="500">
 알림페이지1<img src=https://user-images.githubusercontent.com/48192081/100099745-36de0900-2ea3-11eb-9947-5d46c6666477.png alt="alt text" width="300" height="500">
