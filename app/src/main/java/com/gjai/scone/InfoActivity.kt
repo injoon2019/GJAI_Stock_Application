@@ -67,58 +67,6 @@ class InfoActivity : AppCompatActivity() {
         initViewPager()
         initNavigationBar()
 
-//        bottomNavigationView.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
-//        mainFragment = MainFragment.newInstance()
-//        supportFragmentManager.beginTransaction().replace(R.id.main_viewpager, mainFragment).commit()
-
-//        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))   // bottomNavigationView 부분
-//        main_viewList.add(layoutInflater.inflate(R.layout.activity_myinfo, null))
-//        main_viewList.add(layoutInflater.inflate(R.layout.activity_main_layout, null))
-//        main_viewList.add(layoutInflater.inflate(R.layout.activity_present, null))
-//        main_viewList.add(layoutInflater.inflate(R.layout.activity_coupon_register, null))
-//
-//        main_viewpager.adapter = MainPagerAdapter()
-//        //main_viewpager.currentItem = 1
-//
-//        main_viewpager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener(){
-//            override fun onPageSelected(position: Int) {
-//                when(position) {
-//                    0 -> bottomNavigationView.selectedItemId = R.id.item0
-//                    1 -> bottomNavigationView.selectedItemId = R.id.item1
-//                    2 -> bottomNavigationView.selectedItemId = R.id.item2
-//                    3 -> bottomNavigationView.selectedItemId = R.id.item3
-//                    4 -> bottomNavigationView.selectedItemId = R.id.item4
-//                }
-//            }
-//        })
-//        bottomNavigationView.setOnNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.item0 -> main_viewpager.setCurrentItem(0)
-//                R.id.item1 -> main_viewpager.setCurrentItem(1)
-//                R.id.item2 -> main_viewpager.setCurrentItem(2)
-//                R.id.item3 -> main_viewpager.setCurrentItem(3)
-//                R.id.item4 -> main_viewpager.setCurrentItem(4)
-//            }
-//            return@setOnNavigationItemSelectedListener true       // 여기까지
-//         }
-
-
-//        val rank_Adapter =
-//            MainRankAdapter(supportFragmentManager)  // 슬라이딩 탭뷰 부분
-//        // 뷰 페이저에 어댑터 연결
-//        view_pager.adapter = rank_Adapter
-//        view_pager.currentItem=0
-//        // 탭 레아아웃에 뷰페이저 연결
-//        tabs.setupWithViewPager(view_pager)
-//        // 탭뷰 각각 이름 만들기
-//        val feel=arrayOf("10대","20대","30대","40대","50대 이상")
-//        for(i in 0..4)
-//            tabs.getTabAt(i)?.setText(feel[i])
-////        fab.setOnClickListener { view ->
-////            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                .setAction("Action", null).show()
-////        }
-
         val suggestion = resources.getStringArray(R.array.stock_list)// 자동완성 검색기능 부분
         var search_adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, suggestion)
         autocomplete_stock.threshold = 1

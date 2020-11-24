@@ -16,41 +16,41 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainRankActivity : Fragment() {
     // When requested, this adapter returns a com.gjai.scone.DemoObjectFragment,
     // representing an object in the collection.
-    private lateinit var mainRankAdapter: MainRankFragmentAdapter
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
-
-    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_main_rank, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mainRankAdapter = MainRankFragmentAdapter(this)
-        viewPager = view.findViewById(R.id.view_pager)
-        viewPager.adapter = mainRankAdapter
-
-        tabLayout = view.findViewById(R.id.tabLayout)
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
-        }.attach()
-
-    }
-
-}
-
-class MainRankFragmentAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
-
-    override fun getItemCount(): Int = 5
-
-    override fun createFragment(position: Int): Fragment {
-        // Return a NEW fragment instance in createFragment(int)
-        val fragment = MainRankObjectFragment()
-        fragment.arguments = Bundle().apply {
-            // Our object is just an integer :-P
-            putInt(ARG_OBJECT, position + 1)
-        }
-        return fragment
-    }
+//    private lateinit var mainRankAdapter: MainRankFragmentAdapter
+//    private lateinit var viewPager: ViewPager2
+//    private lateinit var tabLayout: TabLayout
+//
+//    override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
+//        return inflater.inflate(R.layout.activity_main_rank, container, false)
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        mainRankAdapter = MainRankFragmentAdapter(this)
+//        viewPager = view.findViewById(R.id.view_pager)
+//        viewPager.adapter = mainRankAdapter
+//
+//        tabLayout = view.findViewById(R.id.tabLayout)
+//        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+//            tab.text = "OBJECT ${(position + 1)}"
+//        }.attach()
+//
+//    }
+//
+//}
+//
+//class MainRankFragmentAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+//
+//    override fun getItemCount(): Int = 5
+//
+//    override fun createFragment(position: Int): Fragment {
+//        // Return a NEW fragment instance in createFragment(int)
+//        val fragment = MainRankObjectFragment()
+//        fragment.arguments = Bundle().apply {
+//            // Our object is just an integer :-P
+//            putInt(ARG_OBJECT, position + 1)
+//        }
+//        return fragment
+//    }
 }
 
 private const val ARG_OBJECT = "object"

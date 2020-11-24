@@ -11,14 +11,22 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.gjai.scone.*
+import com.gjai.scone.RankFragments.*
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main_layout.*
 import kotlinx.android.synthetic.main.activity_main_layout.view.*
 
 class  MainFragment : Fragment() {
 
     private var news_list: Int = 0
+    private lateinit var rankviewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
 
     companion object {
         const val TAG : String = "로그"
@@ -51,6 +59,27 @@ class  MainFragment : Fragment() {
             v -> startActivity(Intent(getActivity(), NotificationActivity::class.java))
         }
 
+        //실시간 rank 검색어 부분
+        var main_rank_List = arrayOf<Rank>(
+            Rank("LG전자", "LG전자", "LG전자", "LG전자", "LG전자", "LG전자"),
+            Rank("LG전자", "LG전자", "LG전자", "LG전자", "LG전자", "LG전자"),
+            Rank("LG전자", "LG전자", "LG전자", "LG전자", "LG전자", "LG전자"),
+            Rank("LG전자", "LG전자", "LG전자", "LG전자", "LG전자", "LG전자"),
+            Rank("LG전자", "LG전자", "LG전자", "LG전자", "LG전자", "LG전자")
+        )
+
+
+        tabLayout = view.findViewById(R.id.rank_tabLayout)
+        rankviewPager = view.findViewById(R.id.rank_view_pager)
+        rankviewPager.adapter = RankViewPagerAdapter(this, main_rank_List)
+
+        val tabLayoutTextArray = arrayOf("10-", "20-", "30-", "40-", "50-")
+
+        TabLayoutMediator(tabLayout,rankviewPager){tab,position->
+            tab.text = tabLayoutTextArray[position]
+        }.attach()
+
+        //리사이클러뷰 부분 여기부터
         var main_info_List = arrayOf<Info>(
             Info("LG전자", "야심차게 준비한  이것 도대체 무엇이길래 사람들이 주목할까?", "lg_content"),
             Info("넷마블", "클라우드 게임 본격화! 나에게 맞는 게임은?", "netmarble_icon"),
@@ -60,7 +89,7 @@ class  MainFragment : Fragment() {
         )
 
         val RV_adapter = RecyclerAdapterInfoFragment(this, main_info_List)
-        view.xml_info_rv.adapter = RV_adapter
+        view.xml_info_rv.adapter = RV_adapter //엑티비티랑 다른점 view를 붙여야함
 
         //SwipeRefresh 구현 부분
         view.srl_main.setOnRefreshListener {
@@ -96,13 +125,17 @@ class  MainFragment : Fragment() {
         }
 
         return view
+
     }
+
 }
 data class Info(val main_title: String, val main_content: String, val main_image: String)
 
+data class Rank(val content1: String, val content2: String, val content3: String, val content4: String, val content5: String, val content6: String )
+
 class RecyclerAdapterInfoFragment(val context: MainFragment, val infoList: Array<Info>) :
     RecyclerView.Adapter<RecyclerAdapterInfoFragment.Holder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder { //context를 불러올땐 parent에서
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recyclerview, parent, false)
         return Holder(view)
     }
@@ -139,3 +172,18 @@ class RecyclerAdapterInfoFragment(val context: MainFragment, val infoList: Array
         }
     }
 }
+
+private  class RankViewPagerAdapter(val context: MainFragment, val rankList: Array<Rank>): FragmentStateAdapter(context){
+    override fun createFragment(position: Int): Fragment {
+        return when(position){
+            0 -> TenAgeFragment()
+            1 -> TwentyAgeFragment()
+            2 -> ThirtyAgeFragment()
+            3 -> FortyAgeFragment()
+            else -> FiftyAgeFragment()
+        }
+    }
+    override fun getItemCount():Int = 5
+
+}
+
