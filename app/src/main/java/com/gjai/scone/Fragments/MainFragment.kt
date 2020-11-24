@@ -73,7 +73,7 @@ class  MainFragment : Fragment() {
         rankviewPager = view.findViewById(R.id.rank_view_pager)
         rankviewPager.adapter = RankViewPagerAdapter(this, main_rank_List)
 
-        val tabLayoutTextArray = arrayOf("10-", "20-", "30-", "40-", "50-")
+        val tabLayoutTextArray = arrayOf("10대", "20대", "30대", "40대", "50대")
 
         TabLayoutMediator(tabLayout,rankviewPager){tab,position->
             tab.text = tabLayoutTextArray[position]

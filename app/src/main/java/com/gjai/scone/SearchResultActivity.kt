@@ -118,7 +118,7 @@ class SearchResultActivity : AppCompatActivity() {
             val dialogView = layoutInflater.inflate(R.layout.activity_after_present, null)
             alertDialog.setView(dialogView)
             alertDialog.show()
-            alertDialog.window?.setLayout(800,700)
+            alertDialog.window?.setLayout(1400,2200)
 
 //            dialog.setTitle("에러")
 //            dialog.setMessage("호출 실패")
