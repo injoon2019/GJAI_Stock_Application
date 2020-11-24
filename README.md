@@ -12,6 +12,27 @@ https://drive.google.com/drive/folders/16yzFIE3Zw4-Xc-MUCYrhwr2o-beR8NwA?usp=sha
 <Yes24-e북>
 http://www.yes24.com/Mall/Main/eBook/017?CategoryNumber=017
 
+------
+
+## 실행 화면
+
+![로그인 후 닉네임 등록 페이지](https://user-images.githubusercontent.com/48192081/100099716-2e85ce00-2ea3-11eb-8844-69f92b8a4cb4.png)
+![로그인 화면](https://user-images.githubusercontent.com/48192081/100099732-347baf00-2ea3-11eb-9300-5f0f16d8931b.png)
+![메인 화면](https://user-images.githubusercontent.com/48192081/100099735-35144580-2ea3-11eb-9be3-e26f314d0582.png)
+![선물 내역](https://user-images.githubusercontent.com/48192081/100099740-35acdc00-2ea3-11eb-9045-8880ff894e4f.png)
+![선물 완료창](https://user-images.githubusercontent.com/48192081/100099743-36457280-2ea3-11eb-8cb3-134b226159d3.png)
+![알림페이지1](https://user-images.githubusercontent.com/48192081/100099745-36de0900-2ea3-11eb-9947-5d46c6666477.png)
+![알림페이지2](https://user-images.githubusercontent.com/48192081/100099748-36de0900-2ea3-11eb-82ca-5a469e89832b.png)
+![주식 설명 페이지](https://user-images.githubusercontent.com/48192081/100099750-37769f80-2ea3-11eb-8557-a4fb898ed58d.png)
+![주식 종목 검색](https://user-images.githubusercontent.com/48192081/100099755-380f3600-2ea3-11eb-9866-c61b3922df0b.png)
+![쿠폰 등록 창](https://user-images.githubusercontent.com/48192081/100099758-38a7cc80-2ea3-11eb-8060-671628fa34ce.png)
+![쿠폰 재사용 불가 창](https://user-images.githubusercontent.com/48192081/100099760-38a7cc80-2ea3-11eb-83ad-95863ec9c0a7.png)
+![쿠폰확인창](https://user-images.githubusercontent.com/48192081/100099761-39406300-2ea3-11eb-9b7d-02cf0ac2f9f6.png)
+![관심사 및 기타정보 등록 페이지](https://user-images.githubusercontent.com/48192081/100099816-44938e80-2ea3-11eb-8af0-124264c324b4.png)
+![환경설정 페이지](https://user-images.githubusercontent.com/48192081/100099823-45c4bb80-2ea3-11eb-8b8a-cc635b4bb233.png)
+![스플레쉬 화면](https://user-images.githubusercontent.com/48192081/100099827-465d5200-2ea3-11eb-9b5b-b1f0a11736f8.png)
+![내 정보 페이지](https://user-images.githubusercontent.com/48192081/100099829-46f5e880-2ea3-11eb-8947-48f6d325a3af.png)
+
 
 # 학습 자료 
 
@@ -123,3 +144,5 @@ com.google.android.gms.common.api.ApiException: 10:
 2. 김보미(2019.10), VIP등급과 보안매체등급 정보를 이용한 협업필터링 기반 스마트뱅킹 금융상품 추천, 성균관대학교 일단대학원 데이터사이언스융합학과
 3. 이재웅(2017.2), Methods of Financial consumer classification and financial instrument recommendation based on machine learning using unstructured data, 경희대학교 대학원 경영학과
 4. 류기동(2019.2), 인공지능 기반 컨택센터 시스템 연구, 서울과학기술대학교 IT정책전문대학원 
+
+
